@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('materiais', 'MaterialController@index');
+Route::get('tipomateriais', 'Tipo_material@tipoMate');
 Route::get('myAplication', function() {
 	return view('materialhome');
 });
