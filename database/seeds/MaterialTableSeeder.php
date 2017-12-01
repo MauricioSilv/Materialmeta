@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Professor;
+use App\Material;
 
 class MaterialTableSeeder extends Seeder
 {
@@ -12,15 +12,13 @@ class MaterialTableSeeder extends Seeder
      */
     public function run()
     {
-        $professor = Professor::create([
+        $material = new Material();
 
-        	'nome'=>'Mauricio da silva',
-        	'contato'=>'99999999',
-        	'email'=>'mausilva828@gmai.com',
-        	'endereco'=>'seilaondefica',
-        	'senha'=>bcrypt('123'),
-
-
-        ]);
+        $material->nome = 'Píncel';
+        $material->quantidade = 5;
+        $material->marca = 'Be 3300 Lu';
+        $material->save();
+        factory(Material::class, 20)->create();
+      
     }
 }

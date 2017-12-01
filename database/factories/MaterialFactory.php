@@ -6,6 +6,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Material::class, function (Faker $faker) {
     return [
-        //
+
+        'nome'=>$faker->nome,
+        'quantidade'=>$faker->quantidade,
+        'marca'=>$faker->marca,
     ];
 });
