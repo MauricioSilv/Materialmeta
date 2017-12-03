@@ -18,7 +18,8 @@ class MaterialTableSeeder extends Seeder
         $material->quantidade = 5;
         $material->marca = 'Be 3300 Lu';
         $material->save();
-        factory(Material::class, 20)->create();
+        
+        
       
     }
 }

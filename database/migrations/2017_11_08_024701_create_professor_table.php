@@ -18,6 +18,7 @@ class CreateProfessorTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->integer('contato');
+            $table->string('sexo');
             $table->string('email');
             $table->string('endereco');
             $table->string('senha');

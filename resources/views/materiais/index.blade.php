@@ -19,8 +19,7 @@
 						<td>{{ $material->quantidade }}</td>
 						<td>{{ $material->marca }}</td>
 						<td>
-							<a href="" class="btn btn-success">Emprestar</a>
-							<a href="" class="btn btn-danger">Excluir</a>
+							<a href="#" class="btn btn-success">Emprestar</a>
 						</td>
 					</tr>
 				@endforeach
