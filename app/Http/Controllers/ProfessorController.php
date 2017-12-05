@@ -52,7 +52,7 @@ class ProfessorController extends Controller
 
          $professor->email = $request->input("email");                               
          $professor->endereco = $request->input("endereco");                               
-         $professor->senha = $request->input("senha");
+         $professor->senha = bcrypt($request->input("senha"));
 
          $professor->save();
 
@@ -65,11 +65,11 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function show(Professor $professor)
+    public function show($id)
     {
-        $professor = Professor::findOrFail($id);
+        //$professor = Professor::findOrFail($id);
 
-        return view('professors.show', compact('professor'));
+        //return view('professors.show', compact('professor'));
     }
 
     /**
@@ -78,11 +78,11 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Professor $professor)
+    public function edit($id)
     {
         $professor = Professor::findOrFail($id);
 
-        return view('professors.edit', compact('professor'));
+        return view('professors.edita', compact('professor'));
     }
 
     /**
@@ -92,16 +92,16 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Professor $professor)
+    public function update($id, Request $request)
     {
         $professor = Professor::findOrFail($id);
 
         $professor->nome = $request->input("nome");
-         $professor->contato = $request->input("contato");
-         $professor->sexo = $request->input("sexo");
+        $professor->contato = $request->input("contato");
+        $professor->sexo = $request->input("sexo");
         $professor->email = $request->input("email");
         $professor->endereco = $request->input("endereco");
-        $professor->senha = $request->input("senha")->bcrypt();
+        $professor->senha = bcrypt($request->input("senha"));
        
         $professor->save();
 
@@ -114,7 +114,7 @@ class ProfessorController extends Controller
      * @param  \App\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Professor $professor)
+    public function destroy($id)
     {
         $professor = Professor::findOrFail($id);
         $professor->delete();

@@ -1,5 +1,5 @@
-@extends('materialhome')
-@section('conteudo')
+@extends('layouts.app')
+@section('content')
 
 	<section class="container">
         <div class="container-fluid">
@@ -47,15 +47,15 @@
                                         </div>
                                         <!---->
                                          <div class="col-sm-6">
-                                        <div class="form-group @if($errors->has('telefone')) has-error @endif">
+                                        <div class="form-group @if($errors->has('contato')) has-error @endif">
                                             <label for="nome-field">Telefone:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="tel" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" id="phone" name="telefone" class="form-control" maxlength="11" placeholder="(00) 0000-0000" class="form-control" value="{{ old("telefone") }}" required/>
+                                                    <input type="tel" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" id="phone" name="contato" class="form-control" maxlength="15" placeholder="(00) 0000-0000" class="form-control" value="{{ old("contato") }}" required/>
                                                 </div>
                                             </div>
-                                            @if($errors->has("telefone"))
-                                                <span class="help-block">{{ $errors->first("telefone") }}</span>
+                                            @if($errors->has("contato"))
+                                                <span class="help-block">{{ $errors->first("contato") }}</span>
                                             @endif
                                         </div>
                                             </div>

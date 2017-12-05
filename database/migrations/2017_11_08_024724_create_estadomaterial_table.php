@@ -17,6 +17,7 @@ class CreateEstadomaterialTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('estado_atual');
+            
         });
     }
 

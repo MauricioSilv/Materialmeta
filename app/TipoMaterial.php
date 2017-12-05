@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoM extends Model
+class TipoMaterial extends Model
 {
     protected $table = 'tipomaterial';
 }

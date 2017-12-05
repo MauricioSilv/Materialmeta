@@ -17,6 +17,7 @@ class MaterialTableSeeder extends Seeder
         $material->nome = 'Píncel';
         $material->quantidade = 5;
         $material->marca = 'Be 3300 Lu';
+        $material->estado_material_id = 1;
         $material->save();
         
         
