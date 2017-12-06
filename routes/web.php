@@ -12,20 +12,20 @@
 */
 
 Route::get('emprestar', 'EmprestimoController@index');
-Route::group([''], function (){
-	Route::resource('professors', 'ProfessorController');
 
-
-});
+Route::resource('professors', 'ProfessorController');
+Route::resource('estadomaterial', 'EstadoMaterialController');
 
 
 
 
-Route::get('materiais', 'MaterialController@index');
-Route::get('tipomateriais', 'Tipo_material@tipoMate');
+Route::resource('materiais', 'MaterialController');
+Route::get('tipomateriais', 'Tipo_material@tipoMate')
+;
 Route::get('/', function() {
 	return view('materialhome');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

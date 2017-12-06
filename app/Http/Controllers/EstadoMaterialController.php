@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\EstadoMaterialController;
 use Illuminate\Http\Request;
+use App\EstadoMaterial;
 
 class EstadoMaterialController extends Controller
 {
@@ -14,7 +14,15 @@ class EstadoMaterialController extends Controller
      */
     public function index()
     {
-        //
+        $estados = EstadoMaterial::all();
+
+         return view('EstadoMaterial.index',[
+
+            'estados' => $estados,
+
+
+         ]);
+        
     }
 
     /**
@@ -24,7 +32,14 @@ class EstadoMaterialController extends Controller
      */
     public function create()
     {
-        //
+
+        $estados = EstadoMaterial::all();
+        return view('EstadoMaterial.create', [
+
+            'estados' =>$estados
+
+
+        ]);
     }
 
     /**
@@ -35,7 +50,13 @@ class EstadoMaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estados = new EstadoMaterial;
+
+        $estados->estado_atual = $request->get("estado_atual");
+
+        $estados->save();
+
+        return redirect()->action('EstadoMaterialController@index');
     }
 
     /**
@@ -55,9 +76,16 @@ class EstadoMaterialController extends Controller
      * @param  \App\EstadoMaterialController  $estadoMaterialController
      * @return \Illuminate\Http\Response
      */
-    public function edit(EstadoMaterialController $estadoMaterialController)
+    public function edit($id)
     {
-        //
+        $estados = EstadoMaterial::findOrFail($id);
+
+        return view('EstadoMaterial.edita', [
+
+            'estados' => $estados
+
+
+        ]);
     }
 
     /**
@@ -67,9 +95,15 @@ class EstadoMaterialController extends Controller
      * @param  \App\EstadoMaterialController  $estadoMaterialController
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EstadoMaterialController $estadoMaterialController)
+    public function update($id, Request $request)
     {
-        //
+        $estados = EstadoMaterial::findOrFail($id);
+
+        $estados->estado_atual = $request->input("estado_atual");
+
+        $estados->save();
+
+        return redirect()->action('EstadoMaterialController@index');
     }
 
     /**
@@ -78,8 +112,11 @@ class EstadoMaterialController extends Controller
      * @param  \App\EstadoMaterialController  $estadoMaterialController
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EstadoMaterialController $estadoMaterialController)
+    public function destroy($id)
     {
-        //
-    }
+        $estados = EstadoMaterial::findOrFail($id);
+        $estados->delete();
+
+        return redirect()->action('EstadoMaterialController@index');  
+ }
 }

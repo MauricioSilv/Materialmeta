@@ -1,19 +1,25 @@
 @extends('materialhome')
+@section('content-header')
+    <section class="content-header">
+      <h1>
+        <i class="fa fa-users"></i> Professores
+        <small>Gerenciamento dos professores</small>
+        <a href="{{ route('professors.create') }}" class="btn pull-right btn-success">
+            <i class="fa fa-plus-circle"></i> Criar novo Professor
+        </a>
+      </h1>
+    </section>
+@endsection
 @section('conteudo')
 	
-	<section class="content">
-        <div class="container-fluid">
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <a href="{{ route('professors.create') }}"><button type="button" class="btn bg-green waves-effect pull-right"> Novo Professor</button></a>
-                            <h1>Professores</h1>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-list"></i> Lista de Professores
                         </div>
-                        <div class="body table-responsive">
+                        <div class="panel-body">
+                            <table class="table table-bordered">
                             @if($professors->count())
-                                <table class="table table-bordered">
-                                    <thead class="bg-blue-grey">
+                                    <thead>
                                     <tr>
                                         <th>NOME</th>
                                         <th>DATA DE CRIAÇÃO</th>
@@ -26,12 +32,12 @@
                                             <td>{{$professor->nome}}</td>
                                             <td>{{date('d/m/Y', strtotime($professor->created_at))}}</td>
                                             <td>
-                                                <a href="{{ route('professors.edit', $professor->id) }}" title="Editar"><button class="btn btn-warning btn-circle waves-effect"><i class="material-icons">editar</i></button></a>
-                                                <button class="btn btn-primary btn-circle waves-effect" data-toggle="modal" data-target="#modal-{{ $professor->id }}"><i class="material-icons">Informações</i></button>
+                                                <a href="{{ route('professors.edit', $professor->id) }}" title="Editar"><button class="btn btn-default"><i class="fa fa-edit"></i> Editar</button></a>
+                                                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-{{ $professor->id }}"><i class="fa fa-info-circle"> Informações</i></button>
                                                 <form action="{{ route('professors.destroy', $professor->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="btn btn-danger btn-circle waves-effect"><i class="material-icons">Deletar</i></button>
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"> Excluir</i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -58,7 +64,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">FECHAR</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,8 +78,5 @@
                             <h3 class="text-center alert alert-warning">Nenhum Professor!</h3>
                         @endif
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        
 @endsection

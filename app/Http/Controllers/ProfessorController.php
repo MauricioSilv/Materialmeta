@@ -56,7 +56,7 @@ class ProfessorController extends Controller
 
          $professor->save();
 
-         return redirect()->route('professors.index')->with('message', 'Item salvo com successfully.');                               
+         return redirect()->route('professors.index');                               
     }
 
     /**
@@ -105,7 +105,7 @@ class ProfessorController extends Controller
        
         $professor->save();
 
-        return redirect()->route('professors.index')->with('message', 'Item updated successfully.');
+        return redirect()->route('professors.index');
     }
 
     /**
@@ -119,6 +119,6 @@ class ProfessorController extends Controller
         $professor = Professor::findOrFail($id);
         $professor->delete();
 
-        return redirect()->route('professors.index')->with('message', 'Item deleted successfully.');
+        return redirect()->route('professors.index');
     }
 }

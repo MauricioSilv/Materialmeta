@@ -12,13 +12,17 @@
 
 
   <!--aqui entra o topo-->
-  @include('topo');
+  @include('topo')
   <!--aqui entra o lado esquerdo (aside)-->
-  @include('ladoE');
+  @include('ladoE')
   <!--Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     
-    @yield('conteudo')
+    @yield('content-header')
+    
+    <div class="content">
+        @yield('conteudo')
+    </div>
 
   </div>
 

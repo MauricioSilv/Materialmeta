@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('materialhome')
 
-@section('content')
+@section('conteudo')
     <section class="content">
         <div class="container-fluid">
             <div class="row clearfix">

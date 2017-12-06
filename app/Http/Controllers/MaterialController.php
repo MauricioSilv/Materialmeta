@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\EstadoMaterial;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -28,7 +29,9 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        $estados = EstadoMaterial::all();
+
+        return view('materiais.create', compact('estados'));
     }
 
     /**
@@ -39,7 +42,15 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $material = new Material;
+
+        $material->nome = $request->get('nome');
+        $material->quantidade = $request->get('quantidade');
+        $material->marca = $request->get('marca');
+        $material->estado_material_id = $request->get('estado_id');
+        $material->save();
+        
+        return redirect()->action('MaterialController@index');
     }
 
     /**

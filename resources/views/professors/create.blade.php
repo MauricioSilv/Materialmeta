@@ -1,17 +1,11 @@
-@extends('layouts.app')
-@section('content')
+@extends('materialhome')
+@section('conteudo')
 
-	<section class="container">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="card">
-                                <div class="header">
-                                    <h1><i class="material-icons">add</i> Adicione um Professor</h1>
-                                </div>
-                                <div class="body table-responsive">
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-plus"></i> Cadastro de Professor
+        </div>
+        <div class="panel-body">
                                     <form action="{{ route('professors.store') }}" method="POST">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="col-sm-6">
@@ -60,7 +54,7 @@
                                         </div>
                                             </div>
                                             <!---->
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
                                          <div class="form-group @if($errors->has('email')) has-error @endif">
                                          	<label for="nome-field">
                                          		Email:
@@ -71,7 +65,8 @@
                                                 </div>
                                             </div>
                                            </div>
-                                          </div>
+                                       </div>
+                                         
                                             <!---->
                                             <div class="col-sm-12">
                                         <div class="form-group @if($errors->has('endereco')) has-error @endif">
@@ -99,15 +94,11 @@
                                            </div>
                                           </div>
                                         <br>
-                                        <button type="submit" class="btn btn-primary">Criar</button>
-                                        <a class="btn btn-link pull-right" href="{{ route('professors.index') }}"><i class="material-icons">arrow_back</i></a>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i> Criar</button>
+                                        <a class="btn btn-default pull-right" href="{{ route('professors.index') }}">
+                                            <i class="fa fa-arrow-left">Voltar para a lista</i></a>
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-@endsection
+                        
+@stop
