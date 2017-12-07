@@ -13,13 +13,35 @@ class MaterialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $materiais = Material::all();
+        $materiais = Material::select(
+            'material.*',
+            'estadomaterial.estado_atual')
+        ->join('estadomaterial', 'estadomaterial.id', '=', 'material.estado_material_id')
+        ->get();
 
         return view('materiais.index', [
             'materiais' => $materiais
         ]);
+
+        $material = Material::select('*');
+      
+       if($request->has('pesquisa')){
+        $material->where('nome', 'like', '%' .$request->get('pesquisa'). '%');
+       }
+       $material->orderBy('nome', 'asc');
+
+       $materiais = $material->get();
+
+       return view('materiais.index', [
+
+            'materiais'=> $materiais
+
+
+       ]);  
+
+
     }
 
     /**
@@ -59,10 +81,10 @@ class MaterialController extends Controller
      * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function show(Material $material)
+    public function show($id)
     {
         //
-    }
+ }
 
     /**
      * Show the form for editing the specified resource.
@@ -70,9 +92,14 @@ class MaterialController extends Controller
      * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function edit(Material $material)
+    public function edit($id)
     {
-        //
+        $material = Material::findOrFail($id);
+        return view('materiais.edita',[
+
+            'material' =>$material
+
+        ]);
     }
 
     /**
@@ -82,9 +109,17 @@ class MaterialController extends Controller
      * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update($id, Request $request)
     {
-        //
+        $material = Material::findOrFail($id);
+
+        $material->nome = $request->input("nome");
+        $material->quantidade = $request->input("quantidade");
+        $material->marca = $request->input("marca");
+        $material->save();
+
+        return redirect()->action('MaterialController@index');
+
     }
 
     /**
@@ -93,8 +128,11 @@ class MaterialController extends Controller
      * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Material $material)
+    public function destroy($id)
     {
-        //
+        $material = Material::findOrFail($id);
+        $material->delete();
+
+        return redirect()->route('materiais.index');
     }
 }

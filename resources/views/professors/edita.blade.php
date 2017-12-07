@@ -3,11 +3,11 @@
 @section('conteudo')
     <section class="content">
         <div class="container-fluid">
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
+            <div class="">
+                <div class="col-lg-12 col-m12 col-sm-12 col-xs-12">
+                    <div class"">
                         <div class="header">
-                            <h1><i class="material-icons">Editar Professor/ {{$professor->nome}}</h1>
+                            <h1><i class="material-icons"><i class="fa fa-user" aria-hidden="true"></i> Editar /{{$professor->nome}}</h1>
                         </div>
                         <div class="body table-responsive">
                             <form action="{{ route('professors.update',$professor->id) }}" method="POST">
@@ -78,7 +78,7 @@
                                     @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <a class="btn btn-link pull-right" href="{{ route('professors.index') }}"><i class="material-icons">arrow_back</i></a>
+                                <a class="btn btn-default pull-right" href="{{ route('professors.index') }}"><i class="fa fa-arrow-left"></i> Voltar para a lista</a>
                             </form>
                         </div>
                     </div>

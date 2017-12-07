@@ -1,11 +1,20 @@
 @extends('materialhome')
+ @section('content-header')
+    <section class="content-header">
+      <h1>
+        <i class="fa fa-edit"></i> Editar Estado dos Materiais
+        <small>Gerenciamento de materiais</small>
+      </h1>
+    </section>
+@endsection
 @section('conteudo')
 
-  <div class="panel panel-primary">
-        <div class="panel-heading">
-            <i class="fa fa-plus"></i> Editar Estado do Material
-        </div>
-        <div class="panel-body">
+ <section class="content">
+        <div class="container-fluid">
+            <div class="">
+                <div class="col-lg-12 col-m12 col-sm-12 col-xs-12">
+                    <div class"">
+                        <div class="header">
             <form action="{{ action('EstadoMaterialController@update', $estados->id) }}" method="POST">
             	 {!! method_field('PUT') !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -23,4 +32,8 @@
             </form>
         </div>
     </div>
+</div>
+</div>
+</div>
+</section>
 @stop

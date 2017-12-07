@@ -34,10 +34,11 @@
 							<a href="{{ action('EstadoMaterialController@edit', $estado->id)}}" class="btn btn-default">
 								<i class="fa fa-lg fa-edit"></i> Editar
 							</a>
-
-							<a href="{{ action('EstadoMaterialController@destroy',$estado->id)}}" class="btn btn-danger">
-								<i class="fa fa-lg fa-trash"></i> Excluir
-							</a>
+				<form action="{{ action('EstadoMaterialController@destroy', $estado->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
+              <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"> Excluir</i></button>
+                             </form>
 						</td>
 					</tr>
 				@endforeach

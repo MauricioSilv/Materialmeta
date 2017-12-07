@@ -1,6 +1,8 @@
 @extends('materialhome')
 
 @section('content-header')
+
+ 
 	<section class="content-header">
 	  <h1>
 	    <i class="fa fa-archive"></i> Cadastro de Materiais
@@ -10,19 +12,38 @@
 		</a>
 	  </h1>
 	</section>
+
 @endsection
 
 @section('conteudo')
+{{--}}
+ <form class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="pesquisa" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" class="btn btn-flat">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+   {{falta terminar!!
+ ainda não está funcionando--}}
 <div class="panel panel-primary">
+
 	<div class="panel-heading">
 		<i class="fa fa-list"></i> Lista de Materiais
 	</div>
+
+
+
 	<div class="panel-body">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th width="1%">Código</th>
 					<th>Nome</th>
+					<th>Estado Atual</th>
 					<th>Quantidade</th>
 					<th>Marca</th>
 					<th width="30%">Ações</th>
@@ -33,6 +54,7 @@
 					<tr>
 						<td>{{ $material->id }}</td>
 						<td>{{ $material->nome }}</td>
+						<td>{{ $material->estado_atual }}</td>
 						<td>{{ $material->quantidade }}</td>
 						<td>{{ $material->marca }}</td>
 						<td>
@@ -40,13 +62,15 @@
 								<i class="fa fa-check-square-o "></i> Emprestar
 							</a>
 
-							<a href="#" class="btn btn-default">
+							<a href="{{action('MaterialController@edit' ,$material->id)}}" class="btn btn-default">
 								<i class="fa fa-edit"></i> Editar
 							</a>
 
-							<a href="#" class="btn btn-danger">
-								<i class="fa fa-trash-o"></i> Excluir
-							</a>
+							 <form action="{{ action('MaterialController@destroy', $material->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"> Excluir</i></button>
+                             </form>
 						</td>
 					</tr>
 				@endforeach
