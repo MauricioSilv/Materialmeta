@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Emprestimo;
 use Illuminate\Http\Request;
-
+use App\Professor;
+use App\Material;
+use App\User;
 class EmprestimoController extends Controller
 {
     /**
@@ -12,9 +14,16 @@ class EmprestimoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('emprestimo.confirmar-emprestimo');
+        $professores = Professor::all();
+        $material = Material::find($id);
+
+        return view('emprestimo.confirmar-emprestimo', [
+            'professores' => $professores,
+            'material' => $material,
+            'material_id' => $id
+        ]);
     }
 
     /**
@@ -35,7 +44,18 @@ class EmprestimoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $emprestimo = new Emprestimo;
+
+        $emprestimo->professor_id = $request->get('professor_id');
+        $emprestimo->material_id = $request->get('material_id');
+        $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
+        $emprestimo->user_id = 1; #incompleto;
+
+        # $emprestimo->data = $request->get('data');
+
+        $emprestimo->save();
+        
     }
 
     /**

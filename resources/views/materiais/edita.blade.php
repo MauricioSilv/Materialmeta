@@ -8,7 +8,11 @@
     </section>
 @endsection
 		@section('conteudo')
-		<div class="panel-body">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-edit"></i> Editar Material
+            </div>
+            <div class="panel-body">
             <form action="{{ action('MaterialController@update', $material->id) }}" method="POST">
             	 {!! method_field('PUT') !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -25,6 +29,18 @@
                     <input type="text" class="form-control" name="marca" 
                     value="{{is_null(old("marca")) ? $material->marca : old("marca") }}"/>
                 </div>
+                <div class="form-group">
+                    <label>Estado Atual</label>
+                    
+                    <select class="form-control" name="estado_id">
+                        @foreach($estados as $estado)
+                            <option value="{{ $estado->id }}">
+                                {{ $estado->estado_atual }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                 </div>
              
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-plus-circle fa-lg"></i> Salvar
@@ -34,4 +50,5 @@
                 </a>
             </form>
         </div>
+    </div>
 	@stop

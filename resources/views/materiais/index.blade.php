@@ -16,10 +16,10 @@
 @endsection
 
 @section('conteudo')
-{{--}}
+
  <form class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="pesquisa" class="form-control" placeholder="Search...">
+          <input type="text" value="{{ $pesquisa }}" name="pesquisa" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
                 <button type="submit" class="btn btn-flat">
                   <i class="fa fa-search"></i>
@@ -27,8 +27,6 @@
               </span>
         </div>
       </form>
-   {{falta terminar!!
- ainda não está funcionando--}}
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
@@ -44,6 +42,7 @@
 					<th width="1%">Código</th>
 					<th>Nome</th>
 					<th>Estado Atual</th>
+					<th>Tipo</th>
 					<th>Quantidade</th>
 					<th>Marca</th>
 					<th width="30%">Ações</th>
@@ -55,10 +54,11 @@
 						<td>{{ $material->id }}</td>
 						<td>{{ $material->nome }}</td>
 						<td>{{ $material->estado_atual }}</td>
+						<td>{{ $material->tipo }}</td>
 						<td>{{ $material->quantidade }}</td>
 						<td>{{ $material->marca }}</td>
 						<td>
-							<a href="#" class="btn btn-success ">
+							<a href="{{action('EmprestimoController@index', $material->id)}}" class="btn btn-success">
 								<i class="fa fa-check-square-o "></i> Emprestar
 							</a>
 

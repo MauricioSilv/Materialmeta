@@ -10,11 +10,11 @@
 @section('conteudo')
 
  <section class="content">
-        <div class="container-fluid">
-            <div class="">
-                <div class="col-lg-12 col-m12 col-sm-12 col-xs-12">
-                    <div class"">
-                        <div class="header">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-edit"></i> Editar Material
+            </div>
+            <div class="panel-body">
             <form action="{{ action('EstadoMaterialController@update', $estados->id) }}" method="POST">
             	 {!! method_field('PUT') !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -32,8 +32,5 @@
             </form>
         </div>
     </div>
-</div>
-</div>
-</div>
 </section>
 @stop

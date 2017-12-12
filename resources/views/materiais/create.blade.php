@@ -30,6 +30,17 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <label>Tipo do Material</label>
+                    <select class="form-control" name="tipo_id">
+                        @foreach($tipos as $tipo)
+                            <option value="{{ $tipo->id }}">
+                                {{ $tipo->nome }}
+                            </option>
+                            
+                        @endforeach
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-plus-circle fa-lg"></i> Criar
                 </button>

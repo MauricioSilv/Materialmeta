@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('emprestar', 'EmprestimoController@index');
+Route::get('emprestar/{material}', 'EmprestimoController@index');
+Route::post('emprestar', 'EmprestimoController@store');
 
 Route::resource('professors', 'ProfessorController');
 Route::resource('estadomaterial', 'EstadoMaterialController');

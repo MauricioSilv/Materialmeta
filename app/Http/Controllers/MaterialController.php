@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Material;
 use App\EstadoMaterial;
+use App\TipoMaterial;
+use App\Emprestimo;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -17,26 +19,28 @@ class MaterialController extends Controller
     {
         $materiais = Material::select(
             'material.*',
-            'estadomaterial.estado_atual')
+            'estadomaterial.estado_atual',
+            'tipomaterial.nome as tipo'
+        )
         ->join('estadomaterial', 'estadomaterial.id', '=', 'material.estado_material_id')
-        ->get();
+        ->join('tipomaterial', 'tipomaterial.id', '=', 'material.tipo_material_id');
+        //->get();
 
-        return view('materiais.index', [
-            'materiais' => $materiais
-        ]);
-
-        $material = Material::select('*');
+        //$material = Material::select('*');
       
        if($request->has('pesquisa')){
-        $material->where('nome', 'like', '%' .$request->get('pesquisa'). '%');
+        $materiais->where('material.nome', 'like', '%' .$request->get('pesquisa'). '%');
        }
-       $material->orderBy('nome', 'asc');
 
-       $materiais = $material->get();
+       $materiais = $materiais->get();
+      // $material->orderBy('nome', 'asc');
+
+       //$materiais = $material->get();
 
        return view('materiais.index', [
 
-            'materiais'=> $materiais
+            'materiais'=> $materiais,
+            'pesquisa' => $request->get('pesquisa')
 
 
        ]);  
@@ -52,8 +56,9 @@ class MaterialController extends Controller
     public function create()
     {
         $estados = EstadoMaterial::all();
+        $tipos = TipoMaterial::all();
 
-        return view('materiais.create', compact('estados'));
+        return view('materiais.create')->with(compact('estados', 'tipos'));
     }
 
     /**
@@ -70,6 +75,7 @@ class MaterialController extends Controller
         $material->quantidade = $request->get('quantidade');
         $material->marca = $request->get('marca');
         $material->estado_material_id = $request->get('estado_id');
+        $material->tipo_material_id = $request->get('tipo_id');
         $material->save();
         
         return redirect()->action('MaterialController@index');
@@ -95,11 +101,8 @@ class MaterialController extends Controller
     public function edit($id)
     {
         $material = Material::findOrFail($id);
-        return view('materiais.edita',[
-
-            'material' =>$material
-
-        ]);
+        $estados = EstadoMaterial::all();
+        return view('materiais.edita')->with(compact('material', 'estados'));
     }
 
     /**
@@ -116,6 +119,7 @@ class MaterialController extends Controller
         $material->nome = $request->input("nome");
         $material->quantidade = $request->input("quantidade");
         $material->marca = $request->input("marca");
+        $material->estado_material_id = $request->input("estado_id");
         $material->save();
 
         return redirect()->action('MaterialController@index');

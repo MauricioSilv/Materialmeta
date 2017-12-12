@@ -21,6 +21,9 @@ class CreateMaterialTable extends Migration
             $table->string('marca');
             $table->integer('estado_material_id')->unsigned();
             $table->foreign('estado_material_id')->references('id')->on('estadomaterial');
+             $table->integer('tipo_material_id')->unsigned();
+            $table->foreign('tipo_material_id')->references('id')->on('tipomaterial');
+
         });
     }
 
