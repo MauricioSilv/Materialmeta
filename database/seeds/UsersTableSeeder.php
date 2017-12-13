@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Professor;
+use App\User;
 
-class ProfessorTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,6 @@ class ProfessorTableSeeder extends Seeder
      */
     public function run()
     {
-          Professor::truncate();
-        factory(Professor::class, 50)->create();
-    
+       
     }
 }

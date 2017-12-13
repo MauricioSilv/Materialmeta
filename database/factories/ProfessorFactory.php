@@ -5,11 +5,11 @@ use App\Professor;
 
 $factory->define(App\Professor::class, function (Faker $faker) {
     return [
-        'nome' =>$faker->nome,
-        'contato' =>$faker->contato,
+        'nome' =>$faker->streetName,
+        'contato' =>$faker->phoneNumber,
         'sexo' =>$faker->sexo,
         'email' =>$faker->email,
-        'endereco' =>$faker->endereco,
-        'senha' =>$faker->senha,
+        'endereco' =>$faker->address,
+        'senha' =>$faker->password,
     ];
 });

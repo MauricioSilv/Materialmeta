@@ -16,7 +16,8 @@ class MaterialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    {   
+        $emprestimo = Emprestimo::all();
         $materiais = Material::select(
             'material.*',
             'estadomaterial.estado_atual',
@@ -40,10 +41,12 @@ class MaterialController extends Controller
        return view('materiais.index', [
 
             'materiais'=> $materiais,
-            'pesquisa' => $request->get('pesquisa')
+            'pesquisa' => $request->get('pesquisa'),
+            'emprestimo' => $emprestimo,    
 
 
        ]);  
+
 
 
     }

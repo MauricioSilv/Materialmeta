@@ -18,12 +18,13 @@ class EmprestimoController extends Controller
     {
         $professores = Professor::all();
         $material = Material::find($id);
-
+        $emprestimo = Emprestimo::all();
         return view('emprestimo.confirmar-emprestimo', [
             'professores' => $professores,
             'material' => $material,
             'material_id' => $id
         ]);
+
     }
 
     /**
@@ -43,19 +44,18 @@ class EmprestimoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
 
         $emprestimo = new Emprestimo;
 
         $emprestimo->professor_id = $request->get('professor_id');
         $emprestimo->material_id = $request->get('material_id');
         $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
-        $emprestimo->user_id = 1; #incompleto;
+        $emprestimo->user_id = $request->get('users'); #incompleto;
 
         # $emprestimo->data = $request->get('data');
 
         $emprestimo->save();
-        
     }
 
     /**

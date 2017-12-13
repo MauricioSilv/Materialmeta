@@ -21,7 +21,9 @@
     @yield('content-header')
     
     <div class="content">
+      
         @yield('conteudo')
+  
     </div>
 
   </div>

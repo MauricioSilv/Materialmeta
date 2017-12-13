@@ -16,6 +16,7 @@
 @endsection
 
 @section('conteudo')
+<section class="container-fluid">
 
  <form class="sidebar-form">
         <div class="input-group">
@@ -40,11 +41,11 @@
 			<thead>
 				<tr>
 					<th width="1%">Código</th>
-					<th>Nome</th>
-					<th>Estado Atual</th>
-					<th>Tipo</th>
-					<th>Quantidade</th>
-					<th>Marca</th>
+					<th width="5%">Nome</th>
+					<th width="10%">Estado Atual</th>
+					<th width="7%">Tipo</th>
+					<th width="1%">Quantidade</th>
+					<th width="6%">Marca</th>
 					<th width="30%">Ações</th>
 				</tr>
 			</thead>
@@ -58,8 +59,10 @@
 						<td>{{ $material->quantidade }}</td>
 						<td>{{ $material->marca }}</td>
 						<td>
-							<a href="{{action('EmprestimoController@index', $material->id)}}" class="btn btn-success">
-								<i class="fa fa-check-square-o "></i> Emprestar
+
+
+							<a href="{{action('EmprestimoController@index', $material->id)}}" class="btn btn-success @if($emprestimo != false) disabled  @endif" />
+								<i class="fa fa-check-square-o"></i> Emprestar
 							</a>
 
 							<a href="{{action('MaterialController@edit' ,$material->id)}}" class="btn btn-default">
