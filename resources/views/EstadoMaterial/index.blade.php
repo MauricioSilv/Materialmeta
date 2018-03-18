@@ -17,6 +17,7 @@
 	</div>
 	<div class="panel-body">
 		<table class="table table-bordered">
+		@if(count($estados))
 			<thead>
 				<tr>
 					<th width="1%">Código</th>
@@ -43,6 +44,13 @@
 					</tr>
 				@endforeach
 			</tbody>
+			 @else
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 	<span aria-hidden="true">&times;</span></button>
+                     <strong>Opa!</strong> Nenhuma Condição de Material Cadastrado.
+                </div>
+             @endif
 			<tfoot>
 				
 			</tfoot>

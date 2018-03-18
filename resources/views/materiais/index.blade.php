@@ -16,7 +16,6 @@
 @endsection
 
 @section('conteudo')
-<section class="container-fluid">
 
  <form class="sidebar-form">
         <div class="input-group">
@@ -34,10 +33,9 @@
 		<i class="fa fa-list"></i> Lista de Materiais
 	</div>
 
-
-
 	<div class="panel-body">
 		<table class="table table-bordered">
+	@if($materiais->count())
 			<thead>
 				<tr>
 					<th width="1%">Código</th>
@@ -59,9 +57,12 @@
 						<td>{{ $material->quantidade }}</td>
 						<td>{{ $material->marca }}</td>
 						<td>
-
-
-							<a href="{{action('EmprestimoController@index', $material->id)}}" class="btn btn-success @if($emprestimo != false) disabled  @endif" />
+						
+							
+							<a href="#" class="btn btn-danger">
+								Agendar
+							</a>
+							<a href="{{action('EmprestimoController@index', $material->id)}}" class="btn btn-success" >
 								<i class="fa fa-check-square-o"></i> Emprestar
 							</a>
 
@@ -78,10 +79,18 @@
 					</tr>
 				@endforeach
 			</tbody>
+			@else
+	   <div class="alert alert-warning alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         	<span aria-hidden="true">&times;</span></button>
+           <strong>Opa!</strong> Nenhum Material Cadastrado.
+        </div>
+     @endif
 			<tfoot>
 				
 			</tfoot>
 		</table>
 	</div>
+	
 </div>
 @endsection

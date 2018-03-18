@@ -17,7 +17,7 @@ class CreateProfessorTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nome');
-            $table->integer('contato');
+            $table->string('contato');
             $table->string('sexo');
             $table->string('email');
             $table->string('endereco');

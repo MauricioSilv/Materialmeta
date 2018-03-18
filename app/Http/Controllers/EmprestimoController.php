@@ -51,7 +51,7 @@ class EmprestimoController extends Controller
         $emprestimo->professor_id = $request->get('professor_id');
         $emprestimo->material_id = $request->get('material_id');
         $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
-        $emprestimo->user_id = $request->get('users'); #incompleto;
+        $emprestimo->user_id = \Auth::id(); # $request->get('users'); #incompleto;
 
         # $emprestimo->data = $request->get('data');
 

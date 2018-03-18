@@ -31,6 +31,12 @@
                 <span>Estado do Material</span>
             </a>
         </li>
+        <li>
+            <a href="/tipomateriais">
+                <i class="fa fa-archive"></i>
+                <span>Tipo do Material</span>
+            </a>
+        </li>
       {{--
         <li class="treeview">
           <a href="#">

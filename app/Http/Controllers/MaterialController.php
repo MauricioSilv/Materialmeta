@@ -7,6 +7,8 @@ use App\EstadoMaterial;
 use App\TipoMaterial;
 use App\Emprestimo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\User;
 
 class MaterialController extends Controller
 {
@@ -21,7 +23,7 @@ class MaterialController extends Controller
         $materiais = Material::select(
             'material.*',
             'estadomaterial.estado_atual',
-            'tipomaterial.nome as tipo'
+            'tipomaterial.tipo_material as tipo'
         )
         ->join('estadomaterial', 'estadomaterial.id', '=', 'material.estado_material_id')
         ->join('tipomaterial', 'tipomaterial.id', '=', 'material.tipo_material_id');

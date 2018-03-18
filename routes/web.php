@@ -17,16 +17,17 @@ Route::post('emprestar', 'EmprestimoController@store');
 Route::resource('professors', 'ProfessorController');
 Route::resource('estadomaterial', 'EstadoMaterialController');
 
-
-
-
 Route::resource('materiais', 'MaterialController');
-Route::get('tipomateriais', 'Tipo_material@tipoMate')
-;
-Route::get('/', function() {
-	return view('materialhome');
-});
+Route::resource('tipomateriais', 'TipoMaterialController');
+//Route::get('/', function() {
+//	return view('materialhome');
+//});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

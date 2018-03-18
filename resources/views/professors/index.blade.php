@@ -73,11 +73,15 @@
 
                                     @endforeach
                                     </tbody>
+                                     @else
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <strong>Opa!</strong> Nenhum Professor Cadastrado.
+                            </div>
+                        @endif
                                 </table>
                         </div>
-                        @else
-                            <h3 class="text-center alert alert-warning">Nenhum Professor!</h3>
-                        @endif
+                       
                     </div>
         
 @endsection

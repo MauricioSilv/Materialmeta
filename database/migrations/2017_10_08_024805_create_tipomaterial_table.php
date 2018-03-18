@@ -15,10 +15,8 @@ class CreateTipomaterialTable extends Migration
     {
         Schema::create('tipomaterial', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('tipo_material');
             $table->timestamps();
-            $table->boolean('material_consumo');
-            $table->boolean('material_permanente');
         });
     }
 
