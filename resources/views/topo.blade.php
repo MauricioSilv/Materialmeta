@@ -7,8 +7,8 @@
     </a>
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
+      <a href="" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -16,22 +16,39 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{ Auth::user()->name }}
+              
+              </span>
+              <i class="fas fa-angle-down">
+                
+              </i>
             </a>
             <ul class="dropdown-menu">
              
               <li class="user-header">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                   {{ Auth::user()->email }}
+                  <small></small>
                 </p>
               </li>
             
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-md-6">
-                  <a href="#" class="btn btn-default btn-flat">Sair</a>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
+                      <button type="button" class="btn btn-outline-secondary">
+                        {{ __('Sair') }}
+                         <i class="fas fa-share-square"></i>
+                        
+                      </button>
+                  </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                   {{ csrf_field() }}
+                </form>
                 </div>
               </li>
             </ul>

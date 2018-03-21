@@ -56,16 +56,14 @@
 						<td>{{ $material->tipo }}</td>
 						<td>{{ $material->quantidade }}</td>
 						<td>{{ $material->marca }}</td>
+					
 						<td>
 						
-							
-							<a href="#" class="btn btn-danger">
-								Agendar
-							</a>
+					  @if(is_null($emprestimo))
 							<a href="{{action('EmprestimoController@index', $material->id)}}" class="btn btn-success" >
-								<i class="fa fa-check-square-o"></i> Emprestar
+								<i class="far fa-thumbs-up"></i> Emprestar
 							</a>
-
+				    
 							<a href="{{action('MaterialController@edit' ,$material->id)}}" class="btn btn-default">
 								<i class="fa fa-edit"></i> Editar
 							</a>
@@ -73,9 +71,18 @@
 							 <form action="{{ action('MaterialController@destroy', $material->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"> Excluir</i></button>
+                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
                              </form>
+                       @else
+							<a href="#" class="btn btn-warning">
+								 <i class="far fa-clock"></i> Agendar
+							</a>
+					   	<a href="" class="btn btn-danger">
+					   		Devolução
+					   	</a>
+
 						</td>
+				@endif
 					</tr>
 				@endforeach
 			</tbody>

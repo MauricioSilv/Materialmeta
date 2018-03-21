@@ -83,7 +83,7 @@
                                     @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <a class="btn btn-default pull-right" href="{{ route('professors.index') }}"><i class="fa fa-arrow-left"></i> Voltar para a lista</a>
+                                <a class="btn btn-default pull-right" href="{{ route('professors.index') }}"><i class="fas fa-reply"></i> Voltar para a lista</a>
                             </form>
                         </div>
                     </div>

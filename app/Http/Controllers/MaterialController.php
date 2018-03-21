@@ -63,7 +63,7 @@ class MaterialController extends Controller
         $estados = EstadoMaterial::all();
         $tipos = TipoMaterial::all();
 
-        return view('materiais.create')->with(compact('estados', 'tipos'));
+        return view('materiais.create',array('estados' => $estados, 'tipo' =>$tipos));
     }
 
     /**

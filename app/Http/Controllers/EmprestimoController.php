@@ -56,6 +56,11 @@ class EmprestimoController extends Controller
         # $emprestimo->data = $request->get('data');
 
         $emprestimo->save();
+
+        if($emprestimo->save())
+        {
+            return redirect()->action('MaterialController@index');
+        }
     }
 
     /**

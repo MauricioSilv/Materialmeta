@@ -34,11 +34,11 @@
                                             <td>{{date('d/m/Y', strtotime($professor->created_at))}}</td>
                                             <td>
                                                 <a href="{{ route('professors.edit', $professor->id) }}" title="Editar"><button class="btn btn-default"><i class="fa fa-edit"></i> Editar</button></a>
-                                                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-{{ $professor->id }}"><i class="fa fa-info-circle"> Informações</i></button>
+                                                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-{{ $professor->id }}"><i class="fas fa-question"></i> Informações</button>
                                                 <form action="{{ route('professors.destroy', $professor->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"> Excluir</i></button>
+                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
                                                 </form>
                                             </td>
                                         </tr>

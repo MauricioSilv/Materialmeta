@@ -9,31 +9,31 @@
         <li class="header">MAIN NAVIGATION</li>
         <li>
             <a href="/">
-                <i class="fa fa-home"></i>
+                <i class="fas fa-home"></i>
                 <span>Início</span>
             </a>
         </li>
         <li>
             <a href="/materiais">
-                <i class="fa fa-archive"></i>
+                <i class="fas fa-archive"></i>
                 <span>Materiais</span>
             </a>
         </li>
         <li>
             <a href="/professors">
-                <i class="fa fa-group"></i>
+                <i class="fas fa-users"></i>
                 <span>Professores</span>
             </a>
         </li>
          <li>
             <a href="/estadomaterial">
-                <i class="fa fa-archive"></i>
+                <i class="fas fa-archive"></i>
                 <span>Estado do Material</span>
             </a>
         </li>
         <li>
             <a href="/tipomateriais">
-                <i class="fa fa-archive"></i>
+                <i class="fas fa-archive"></i>
                 <span>Tipo do Material</span>
             </a>
         </li>

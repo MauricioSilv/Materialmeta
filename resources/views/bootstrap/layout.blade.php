@@ -1,7 +1,7 @@
 <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('css/font-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{asset('css/fontawesome/web-fonts-with-css/css/fontawesome-all.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('css/Ionicons/css/ionicons.min.css') }}">
   <!-- Theme style -->

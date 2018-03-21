@@ -13,10 +13,10 @@
                     <input type="text" class="form-control" name="estado_atual"/>
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-plus-circle fa-lg"></i> Criar
+                    <i class="fas fa-check-circle"></i> Criar
                 </button>
                 <a class="btn btn-default pull-right" href="{{ action('MaterialController@index') }}">
-                    <i class="fa fa-arrow-left"></i> Voltar para a lista
+                    <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>
         </div>

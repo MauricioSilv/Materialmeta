@@ -96,7 +96,7 @@
                                         <br>
                                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i> Criar</button>
                                         <a class="btn btn-default pull-right" href="{{ route('professors.index') }}">
-                                            <i class="fa fa-arrow-left">Voltar para a lista</i></a>
+                                            <i class="fas fa-reply"></i>Voltar para a lista</a>
                                     </form>
                                 </div>
                             </div>

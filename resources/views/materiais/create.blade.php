@@ -33,9 +33,9 @@
                 <div class="form-group">
                     <label>Tipo do Material</label>
                     <select class="form-control" name="tipo_id">
-                        @foreach($tipos as $tipo)
-                            <option value="{{ $tipo->id }}">
-                                {{ $tipo->nome }}
+                        @foreach($tipo as $tipomaterial)
+                            <option value="{{ $tipomaterial->id }}">
+                                {{ $tipomaterial->tipo_material }}
                             </option>
                             
                         @endforeach
@@ -45,7 +45,7 @@
                     <i class="fa fa-plus-circle fa-lg"></i> Criar
                 </button>
                 <a class="btn btn-default pull-right" href="{{ action('MaterialController@index') }}">
-                    <i class="fa fa-arrow-left"></i> Voltar para a lista
+                    <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>
         </div>
