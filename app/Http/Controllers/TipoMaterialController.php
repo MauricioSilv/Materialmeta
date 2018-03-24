@@ -20,6 +20,12 @@ class TipoMaterialController extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request,[
+
+            'tipo_material' => 'required|min:3',
+
+        ]);
+
         $tipomaterial = new TipoMaterial;
 
         $tipomaterial->tipo_material = $request->input('tipo_material');
@@ -39,6 +45,11 @@ class TipoMaterialController extends Controller
     }
     public function update($id, Request $request)
     {
+        $this->validate($request,[
+
+            'tipo_material' => 'required|min:3',
+
+        ]);
         $tipomaterial = TipoMaterial::find($id);
 
         $tipomaterial->tipo_material = $request->input('tipo_material');

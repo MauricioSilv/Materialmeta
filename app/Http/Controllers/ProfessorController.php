@@ -42,6 +42,15 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+
+            'nome' => 'required|min:3',
+            'contato' => 'required|numeric',
+            'sexo' => 'required|boolean',
+            'email' => 'required|email|',
+            'endereco' => 'required|string|min:3',
+            'senha' => 'required|min:3|',
+        ]);
         $professor = new Professor();
 
         $professor->nome = $request->input("nome");
@@ -94,6 +103,16 @@ class ProfessorController extends Controller
      */
     public function update($id, Request $request)
     {
+         $this->validate($request, [
+
+            'nome' => 'required|min:3',
+            'contato' => 'required|numeric',
+            'sexo' => 'required|boolean',
+            'email' => 'required|email|',
+            'endereco' => 'required|string|min:3',
+            'senha' => 'required|min:3|',
+        ]);
+         
         $professor = Professor::findOrFail($id);
 
         $professor->nome = $request->input("nome");

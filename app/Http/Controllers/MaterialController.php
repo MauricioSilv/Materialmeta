@@ -20,15 +20,17 @@ class MaterialController extends Controller
     public function index(Request $request)
     {   
         $emprestimo = Emprestimo::all();
+
+
         $materiais = Material::select(
             'material.*',
             'estadomaterial.estado_atual',
             'tipomaterial.tipo_material as tipo'
         )
         ->join('estadomaterial', 'estadomaterial.id', '=', 'material.estado_material_id')
-        ->join('tipomaterial', 'tipomaterial.id', '=', 'material.tipo_material_id');
+        ->join('tipomaterial', 'tipomaterial.id', '=', 'material.tipo_material_id')
+        ->with(['emprestimos']);
         //->get();
-
         //$material = Material::select('*');
       
        if($request->has('pesquisa')){
@@ -74,6 +76,13 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+
+            'nome' => 'required|unique:material|min:3',
+            'quantidade' => 'required|integer|min:1',
+            'marca' => 'required|string|min:1',
+        ]);//validação dos campos;
+
         $material = new Material;
 
         $material->nome = $request->get('nome');
@@ -119,6 +128,12 @@ class MaterialController extends Controller
      */
     public function update($id, Request $request)
     {
+         $this->validate($request, [
+
+            'nome' => 'required|unique:material|min:3',
+            'quantidade' => 'required|integer|min:1',
+            'marca' => 'required|string|min:1',
+        ]);
         $material = Material::findOrFail($id);
 
         $material->nome = $request->input("nome");

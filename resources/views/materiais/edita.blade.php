@@ -1,5 +1,6 @@
 		@extends('materialhome')
         @section('content-header')
+    
     <section class="content-header">
       <h1>
         <i class="fa fa-edit"></i> Editar Materiais
@@ -8,6 +9,15 @@
     </section>
 @endsection
 		@section('conteudo')
+    @if(count($errors))
+     <div class="alert alert-danger">
+         <ul>
+             @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+         </ul>
+     </div>
+     @endif    
 		<div class="panel panel-primary">
             <div class="panel-heading">
                 <i class="fa fa-edit"></i> Editar Material

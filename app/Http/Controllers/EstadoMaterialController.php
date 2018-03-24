@@ -50,6 +50,13 @@ class EstadoMaterialController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+
+            'estado_atual' => 'required|min:3',
+
+
+        ]);
+
         $estados = new EstadoMaterial;
 
         $estados->estado_atual = $request->get("estado_atual");
@@ -97,6 +104,13 @@ class EstadoMaterialController extends Controller
      */
     public function update($id, Request $request)
     {
+        $this->validate($request, [
+
+            'estado_atual' => 'required|min:3',
+
+
+        ]);
+        
         $estados = EstadoMaterial::findOrFail($id);
 
         $estados->estado_atual = $request->input("estado_atual");

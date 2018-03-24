@@ -57,10 +57,10 @@ class EmprestimoController extends Controller
 
         $emprestimo->save();
 
-        if($emprestimo->save())
-        {
-            return redirect()->action('MaterialController@index');
-        }
+        return view('materiais.index', [
+            'emprestimo' =>$emprestimo,
+
+        ]);
     }
 
     /**

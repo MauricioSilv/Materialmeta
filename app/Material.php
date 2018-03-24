@@ -13,4 +13,9 @@ class Material extends Model
 
 
     ];
+
+    public function emprestimos()
+    {
+    	return $this->hasMany('App\Emprestimo');
+    }
 }

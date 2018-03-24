@@ -1,6 +1,14 @@
 @extends('materialhome')
 @section('conteudo')
-
+ @if(count($errors) > 0)
+  <div class="alert alert-danger">
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+  </div>
+  @endif
 	<div class="panel panel-primary">
         <div class="panel-heading">
             <i class="fa fa-plus"></i> Cadastro de Professor

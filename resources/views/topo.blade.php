@@ -19,7 +19,7 @@
               <span class="hidden-xs">{{ Auth::user()->name }}
               
               </span>
-              <i class="fas fa-angle-down">
+              <i class="fas fa-chevron-down">
                 
               </i>
             </a>
