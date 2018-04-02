@@ -21,8 +21,8 @@
                     <label>Estado Atual</label>
                     <input type="text" class="form-control" name="estado_atual"/>
                 </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-check-circle"></i> Criar
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-check-circle"></i> Salvar
                 </button>
                 <a class="btn btn-default pull-right" href="{{ action('MaterialController@index') }}">
                     <i class="fas fa-reply"></i> Voltar para a lista

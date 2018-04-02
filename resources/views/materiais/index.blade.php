@@ -20,9 +20,9 @@
  <form class="sidebar-form">
         <div class="input-group">
           <input type="text" value="{{ $pesquisa }}" name="pesquisa" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
+          <span class="input-group-btn" >
                 <button type="submit" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
+                  <i class="fas fa-search"></i>
                 </button>
               </span>
         </div>
@@ -41,10 +41,11 @@
 				<tr>
 					<th width="1%">Código</th>
 					<th width="5%">Nome</th>
-					<th width="10%">Estado Atual</th>
+					<th width="7%">Estado Atual</th>
 					<th width="7%">Tipo</th>
 					<th width="1%">Quantidade</th>
 					<th width="6%">Marca</th>
+					<th width="6%">Estatus</th>
 					<th width="30%">Ações</th>
 				</tr>
 			</thead>
@@ -56,17 +57,55 @@
 						<td>{{ $material->estado_atual }}</td>
 						<td>{{ $material->tipo }}</td>
 						<td>{{ $material->quantidade }}</td>
-						<td>{{ $material->marca }}</td>			
+						<td>{{ $material->marca }}</td>
+					@if($material->status_emprestimo == 1)	
+						<td><i class="fas fa-circle" style="color: rgb(0,230,0);"></i> Disponível</td>
+						@elseif($material->status_emprestimo == 2)
+						<td><i class="fas fa-circle" style="color: rgb(255, 153, 0);""></i> Agendado</td>
+						@elseif($material->status_emprestimo == 3)
+						<td><i class="fas fa-circle" style="color: rgb(230, 57, 0);"></i> Emprestado</td>
+						@endif	
 						<td>
-						
-				
-                       
-							@if($material->emprestimos->count())
-					   	<a href="" class="btn btn-danger">
+			
+							@if($material->status_emprestimo == 3)
+					   	<a href="{{ action('EmprestimoController@edit', $material->id) }}" class="btn btn-danger">
 					   		<i class="fas fa-exchange-alt"></i> Devolução
 					   	</a>
+					   	<button class="btn btn-primary" data-toggle="modal" data-target="#modal-{{ $material->material_id }}"><i class="fas fa-question"></i> Informações</button>
+					   	<!-- modal de informações -->
+					   	  <div class="modal fade" id="modal-{{ $material->material_id }}" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-blue">
+                                                        <h1 id="ModalLabel">{{$material->nome}} | {{$material->marca}}</h1>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-sm-6">
+                                                            <label>Falta fazer:</label>
+                                                            <p></p>
+                                                            <label>Falta fazer:</label>
+                                                            <p></p>
+                                                            <label>Falta fazer:</label>
+                                                            <p></p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label>Data de Cadastro:</label>
+                                                            <p>{{date('d/m/Y')}}</p>
+                                                            <label>Ultima atualização:</label>
+                                                            <p>{{date('d/m/Y')}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-reply"></i>
+
+FECHAR</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
 							@else
-							<a href="{{action('EmprestimoController@index', $material->id)}}" class="btn btn-success" >
+							<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btn-success" >
 								<i class="far fa-thumbs-up"></i> Emprestar
 							</a>
 

@@ -17,13 +17,13 @@
   @include('ladoE')
   <!--Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
     
     @yield('content-header')
     
     <div class="content">
-      
         @yield('conteudo')
-  
+      
     </div>
 
   </div>

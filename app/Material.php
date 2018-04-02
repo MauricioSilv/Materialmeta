@@ -9,7 +9,7 @@ class Material extends Model
     protected $table = 'material';
     protected $fillable = [
 
-    	'id','nome','quantidade','marca'
+    	'id','nome','quantidade','marca','status_emprestimo',
 
 
     ];

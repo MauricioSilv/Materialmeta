@@ -6,6 +6,7 @@ use App\Material;
 use App\EstadoMaterial;
 use App\TipoMaterial;
 use App\Emprestimo;
+use App\Professor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\User;
@@ -20,7 +21,7 @@ class MaterialController extends Controller
     public function index(Request $request)
     {   
         $emprestimo = Emprestimo::all();
-
+        $professor = Professor::all();
 
         $materiais = Material::select(
             'material.*',
@@ -32,21 +33,23 @@ class MaterialController extends Controller
         ->with(['emprestimos']);
         //->get();
         //$material = Material::select('*');
-      
        if($request->has('pesquisa')){
         $materiais->where('material.nome', 'like', '%' .$request->get('pesquisa'). '%');
        }
 
        $materiais = $materiais->get();
+
       // $material->orderBy('nome', 'asc');
 
        //$materiais = $material->get();
 
+       
        return view('materiais.index', [
 
             'materiais'=> $materiais,
             'pesquisa' => $request->get('pesquisa'),
-            'emprestimo' => $emprestimo,    
+            'emprestimo' => $emprestimo,
+            'professor' => $professor,    
 
 
        ]);  
@@ -88,6 +91,7 @@ class MaterialController extends Controller
         $material->nome = $request->get('nome');
         $material->quantidade = $request->get('quantidade');
         $material->marca = $request->get('marca');
+        $material->status_emprestimo = 1;
         $material->estado_material_id = $request->get('estado_id');
         $material->tipo_material_id = $request->get('tipo_id');
         $material->save();
@@ -101,7 +105,7 @@ class MaterialController extends Controller
      * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
  }
@@ -128,9 +132,11 @@ class MaterialController extends Controller
      */
     public function update($id, Request $request)
     {
+
+
          $this->validate($request, [
 
-            'nome' => 'required|unique:material|min:3',
+            'nome' => 'required|min:3',
             'quantidade' => 'required|integer|min:1',
             'marca' => 'required|string|min:1',
         ]);
@@ -159,4 +165,5 @@ class MaterialController extends Controller
 
         return redirect()->route('materiais.index');
     }
+  
 }

@@ -65,7 +65,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-reply"></i>
+
+FECHAR</button>
                                                     </div>
                                                 </div>
                                             </div>

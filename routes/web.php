@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('emprestar/{material}', 'EmprestimoController@index');
-Route::post('emprestar', 'EmprestimoController@store');
-
+Route::resource('emprestar', 'EmprestimoController');
 Route::resource('professors', 'ProfessorController');
 Route::resource('estadomaterial', 'EstadoMaterialController');
 
 Route::resource('materiais', 'MaterialController');
 Route::resource('tipomateriais', 'TipoMaterialController');
+
 //Route::get('/', function() {
 //	return view('materialhome');
 //});

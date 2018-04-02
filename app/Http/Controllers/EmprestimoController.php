@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Emprestimo;
 use Illuminate\Http\Request;
 use App\Professor;
@@ -14,17 +15,9 @@ class EmprestimoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(Request $request)
     {
-        $professores = Professor::all();
-        $material = Material::find($id);
-        $emprestimo = Emprestimo::all();
-        return view('emprestimo.confirmar-emprestimo', [
-            'professores' => $professores,
-            'material' => $material,
-            'material_id' => $id
-        ]);
-
+      
     }
 
     /**
@@ -45,22 +38,20 @@ class EmprestimoController extends Controller
      */
     public function store(Request $request)
     { 
+        
 
         $emprestimo = new Emprestimo;
 
         $emprestimo->professor_id = $request->get('professor_id');
         $emprestimo->material_id = $request->get('material_id');
         $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
-        $emprestimo->user_id = \Auth::id(); # $request->get('users'); #incompleto;
-
-        # $emprestimo->data = $request->get('data');
-
+        $emprestimo->user_id = \Auth::id();
+        
         $emprestimo->save();
 
-        return view('materiais.index', [
-            'emprestimo' =>$emprestimo,
+        return redirect()->action('MaterialController@index');
 
-        ]);
+        
     }
 
     /**
@@ -69,9 +60,24 @@ class EmprestimoController extends Controller
      * @param  \App\Emprestimo  $emprestimo
      * @return \Illuminate\Http\Response
      */
-    public function show(Emprestimo $emprestimo)
+    public function show($id)
     {
-        //
+          $professores = Professor::all();
+        $material = Material::find($id);
+        $emprestimo = Emprestimo::all();
+        if($emprestimo == true)
+        {
+        $materials = DB::table('material')
+        ->where('id', $id)
+        ->update(['status_emprestimo' => 3]);    
+        }
+
+        
+        return view('emprestimo.confirmar-emprestimo', [
+            'professores' => $professores,
+            'material' => $material,
+            'material_id' => $id,
+        ]);
     }
 
     /**
@@ -80,9 +86,18 @@ class EmprestimoController extends Controller
      * @param  \App\Emprestimo  $emprestimo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Emprestimo $emprestimo)
+    public function edit($id)
     {
-        //
+         $professores = Professor::all();
+        $material = Material::find($id);
+        $emprestimo = Emprestimo::all();
+
+        
+        return view('emprestimo.confirmar-devolucao', [
+            'professores' => $professores,
+            'material' => $material,
+            'material_id' => $id,
+        ]);   
     }
 
     /**
@@ -92,9 +107,21 @@ class EmprestimoController extends Controller
      * @param  \App\Emprestimo  $emprestimo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Emprestimo $emprestimo)
+    public function update($id, Request $request)
     {
-        //
+
+        $emprestimo = Emprestimo::find($id);
+
+        $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
+        $emprestimo->devolucao = date('Y-m-d H:i:s');
+        if($emprestimo->save())
+    {
+        $materiais = DB::table('material')
+        ->where('id', $id)
+        ->update(['status_emprestimo' => 1]);
+    }
+
+        return redirect()->action('MaterialController@index');
     }
 
     /**

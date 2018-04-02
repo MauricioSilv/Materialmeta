@@ -46,7 +46,7 @@ class ProfessorController extends Controller
 
             'nome' => 'required|min:3',
             'contato' => 'required|numeric',
-            'sexo' => 'required|boolean',
+            'sexo' => 'required|',
             'email' => 'required|email|',
             'endereco' => 'required|string|min:3',
             'senha' => 'required|min:3|',
