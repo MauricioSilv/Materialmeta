@@ -23,10 +23,6 @@
                     <input type="text" class="form-control" name="nome"/>
                 </div>
                 <div class="form-group">
-                    <label>Quantidade</label>
-                    <input type="text" class="form-control" name="quantidade"/>
-                </div>
-                <div class="form-group">
                     <label>Marca</label>
                     <input type="text" class="form-control" name="marca"/>
                 </div>

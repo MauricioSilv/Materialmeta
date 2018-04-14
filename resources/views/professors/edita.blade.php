@@ -91,7 +91,7 @@
                                         <span class="help-block">{{ $errors->first("contato") }}</span>
                                     @endif
                                 </div>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i> Salvar</button>
                                 <a class="btn btn-default pull-right" href="{{ route('professors.index') }}"><i class="fas fa-reply"></i> Voltar para a lista</a>
                             </form>
                         </div>

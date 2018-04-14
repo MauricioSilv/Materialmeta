@@ -6,6 +6,13 @@
 	 <title>MaterialMETA</title>
 	 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   @include('bootstrap.layout')
+ <style type="text/css">
+
+    .main-header .sidebar-toggle:before {
+    content: '';
+}
+
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

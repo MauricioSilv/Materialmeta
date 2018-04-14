@@ -35,7 +35,7 @@
                     <i class="fa fa-plus-circle fa-lg"></i> Salvar
                 </button>
                 <a class="btn btn-default pull-right" href="{{ action('TipoMaterialController@index') }}">
-                    <i class="fa fa-arrow-left"></i> Voltar para a lista
+                    <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>
         </div>

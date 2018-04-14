@@ -82,14 +82,12 @@ class MaterialController extends Controller
         $this->validate($request, [
 
             'nome' => 'required|unique:material|min:3',
-            'quantidade' => 'required|integer|min:1',
             'marca' => 'required|string|min:1',
         ]);//validação dos campos;
 
         $material = new Material;
 
         $material->nome = $request->get('nome');
-        $material->quantidade = $request->get('quantidade');
         $material->marca = $request->get('marca');
         $material->status_emprestimo = 1;
         $material->estado_material_id = $request->get('estado_id');
@@ -137,13 +135,11 @@ class MaterialController extends Controller
          $this->validate($request, [
 
             'nome' => 'required|min:3',
-            'quantidade' => 'required|integer|min:1',
             'marca' => 'required|string|min:1',
         ]);
         $material = Material::findOrFail($id);
 
         $material->nome = $request->input("nome");
-        $material->quantidade = $request->input("quantidade");
         $material->marca = $request->input("marca");
         $material->estado_material_id = $request->input("estado_id");
         $material->save();

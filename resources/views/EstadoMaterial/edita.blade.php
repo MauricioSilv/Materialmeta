@@ -29,14 +29,14 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label>Estado Atual</label>
-                    <input type="text" class="form-control" name="estado_atual" value="{{ is_null(old('estado_atual')) ? $estados->id : old('estado_atual') }}" />
+                    <input type="text" class="form-control" name="estado_atual" value="{{ is_null(old('estado_atual')) ? $estados->estado_atual : old('estado_atual') }}" />
                 </div>
              
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-plus-circle fa-lg"></i> Salvar
                 </button>
                 <a class="btn btn-default pull-right" href="{{ action('EstadoMaterialController@index') }}">
-                    <i class="fa fa-arrow-left"></i> Voltar para a lista
+                    <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>
         </div>

@@ -39,24 +39,22 @@
 	@if($materiais->count())
 			<thead>
 				<tr>
-					<th width="1%">Código</th>
-					<th width="5%">Nome</th>
-					<th width="7%">Estado Atual</th>
-					<th width="7%">Tipo</th>
-					<th width="1%">Quantidade</th>
+					<th width="1%">Cód.</th>
+					<th width="40%">Nome/Estado/Tipo</th>
 					<th width="6%">Marca</th>
-					<th width="6%">Estatus</th>
-					<th width="30%">Ações</th>
+					<th width="10%">Status</th>
+					<th width="50%">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($materiais as $material)
 					<tr>
 						<td>{{ $material->id }}</td>
-						<td>{{ $material->nome }}</td>
-						<td>{{ $material->estado_atual }}</td>
-						<td>{{ $material->tipo }}</td>
-						<td>{{ $material->quantidade }}</td>
+						<td>
+							<p>Nome: {{ $material->nome }}</p>
+							<p>Estado:  {{ $material->estado_atual }}</p>
+							<p>Tipo: {{  $material->tipo }}</p>
+						</td>
 						<td>{{ $material->marca }}</td>
 					@if($material->status_emprestimo == 1)	
 						<td><i class="fas fa-circle" style="color: rgb(0,230,0);"></i> Disponível</td>
@@ -68,7 +66,7 @@
 						<td>
 			
 							@if($material->status_emprestimo == 3)
-					   	<a href="{{ action('EmprestimoController@edit', $material->id) }}" class="btn btn-danger">
+					   	<a href="{{ action('EmprestimoController@edit', $material->id) }}" class="btn btm-sm btn-danger">
 					   		<i class="fas fa-exchange-alt"></i> Devolução
 					   	</a>
 					   	<button class="btn btn-primary" data-toggle="modal" data-target="#modal-{{ $material->material_id }}"><i class="fas fa-question"></i> Informações</button>
@@ -105,7 +103,7 @@ FECHAR</button>
                                         </div>
 
 							@else
-							<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btn-success" >
+							<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btm-sm btn-success" >
 								<i class="far fa-thumbs-up"></i> Emprestar
 							</a>
 

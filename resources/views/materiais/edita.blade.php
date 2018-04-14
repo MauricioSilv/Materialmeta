@@ -31,10 +31,6 @@
                     <input type="text" class="form-control" name="nome" value="{{is_null(old("nome")) ? $material->nome : old("nome") }}" />
                 </div>
                 <div class="form-group">
-                    <label>Quantidade</label>
-                    <input type="text" class="form-control" name="quantidade" value="{{is_null(old("quantidade")) ? $material->quantidade : old("quantidade") }}"/>
-                </div>
-                <div class="form-group">
                     <label>Marca</label>
                     <input type="text" class="form-control" name="marca" 
                     value="{{is_null(old("marca")) ? $material->marca : old("marca") }}"/>

@@ -17,7 +17,6 @@ class CreateMaterialTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nome');
-            $table->integer('quantidade');
             $table->string('marca');
             $table->integer('status_emprestimo');
             $table->integer('estado_material_id')->unsigned();

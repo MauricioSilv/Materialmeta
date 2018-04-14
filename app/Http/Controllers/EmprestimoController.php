@@ -49,6 +49,10 @@ class EmprestimoController extends Controller
         
         $emprestimo->save();
 
+        $materials = DB::table('material')
+        ->where('id', $request->get('material_id'))
+        ->update(['status_emprestimo' => 3]);
+
         return redirect()->action('MaterialController@index');
 
         
@@ -61,23 +65,25 @@ class EmprestimoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-          $professores = Professor::all();
+    {   
+        // dd($id);
+        $professores = Professor::all();
         $material = Material::find($id);
         $emprestimo = Emprestimo::all();
-        if($emprestimo == true)
-        {
-        $materials = DB::table('material')
-        ->where('id', $id)
-        ->update(['status_emprestimo' => 3]);    
-        }
 
+        // if($emprestimo !== null)
+        // {
+        // $materials = DB::table('material')
+        // ->where('id', $id)
+        // ->update(['status_emprestimo' => 3]);    
+        // }
         
         return view('emprestimo.confirmar-emprestimo', [
             'professores' => $professores,
             'material' => $material,
             'material_id' => $id,
         ]);
+
     }
 
     /**
@@ -109,17 +115,16 @@ class EmprestimoController extends Controller
      */
     public function update($id, Request $request)
     {
-
-        $emprestimo = Emprestimo::find($id);
-
-        $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
-        $emprestimo->devolucao = date('Y-m-d H:i:s');
-        if($emprestimo->save())
-    {
+        
+    
         $materiais = DB::table('material')
         ->where('id', $id)
         ->update(['status_emprestimo' => 1]);
-    }
+
+        $emprestimos = DB::table('emprestimo')
+        ->where('id', $id)
+        ->update(['devolucao' => date('Y-m-d H:i:s')]);
+
 
         return redirect()->action('MaterialController@index');
     }
