@@ -94,7 +94,7 @@ class EmprestimoController extends Controller
      */
     public function edit($id)
     {
-         $professores = Professor::all();
+        $professores = Professor::all();
         $material = Material::find($id);
         $emprestimo = Emprestimo::all();
 
@@ -103,6 +103,7 @@ class EmprestimoController extends Controller
             'professores' => $professores,
             'material' => $material,
             'material_id' => $id,
+            'emprestimo' => $emprestimo,
         ]);   
     }
 
@@ -115,14 +116,15 @@ class EmprestimoController extends Controller
      */
     public function update($id, Request $request)
     {
-        
     
+        
         $materiais = DB::table('material')
         ->where('id', $id)
         ->update(['status_emprestimo' => 1]);
 
-        $emprestimos = DB::table('emprestimo')
-        ->where('id', $id)
+        $emp = DB::table('emprestimo')
+        ->whereNull('devolucao')
+        ->where('material_id', $request->get('material_id'))
         ->update(['devolucao' => date('Y-m-d H:i:s')]);
 
 
