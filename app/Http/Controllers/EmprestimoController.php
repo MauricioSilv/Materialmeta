@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Professor;
 use App\Material;
 use App\User;
+use Session;
 class EmprestimoController extends Controller
 {
     /**
@@ -52,6 +53,8 @@ class EmprestimoController extends Controller
         $materials = DB::table('material')
         ->where('id', $request->get('material_id'))
         ->update(['status_emprestimo' => 3]);
+
+         Session::flash('mensagem' , 'Emprestimo realizado com sucesso!');
 
         return redirect()->action('MaterialController@index');
 
@@ -127,6 +130,7 @@ class EmprestimoController extends Controller
         ->where('material_id', $request->get('material_id'))
         ->update(['devolucao' => date('Y-m-d H:i:s')]);
 
+         Session::flash('mensagem' , 'Devolução realizada com sucesso!');
 
         return redirect()->action('MaterialController@index');
     }

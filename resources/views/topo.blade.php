@@ -1,5 +1,5 @@
  <header class="main-header">
-     <a href="index2.html" class="logo">
+     <a  class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>MA</b>M</span>
       <!-- logo for regular state and mobile devices -->
@@ -7,6 +7,9 @@
     </a>
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
+      <a class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <i class="fas fa-align-justify"></i>
+      </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
         
@@ -16,8 +19,8 @@
               <span class="hidden-xs">{{ Auth::user()->name }}
               
               </span>
-              <i class="fas fa-chevron-down">
-                
+              <i class="far fa-user">
+                  
               </i>
             </a>
             <ul class="dropdown-menu">

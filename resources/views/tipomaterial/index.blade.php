@@ -28,9 +28,9 @@
 	 @if($tipos->count())
 	 	<thead>
 	 		<tr>
-	 			<th>ID</th>
+	 			<th width="1%">Cód</th>
 	 			<th>Tipo Atual</th>
-	 			<th>Ações</th>
+	 			<th width="35%">Ações</th>
 	 		</tr>
 	 	</thead>
 	 	<tbody>

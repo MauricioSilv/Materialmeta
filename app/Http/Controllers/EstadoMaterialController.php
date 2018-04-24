@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\EstadoMaterial;
+use Session;
 
 class EstadoMaterialController extends Controller
 {
@@ -63,6 +64,8 @@ class EstadoMaterialController extends Controller
 
         $estados->save();
 
+         Session::flash('mensagem' , 'Criado com sucesso!');
+
         return redirect()->action('EstadoMaterialController@index');
     }
 
@@ -117,6 +120,8 @@ class EstadoMaterialController extends Controller
 
         $estados->save();
 
+         Session::flash('mensagem' , 'Alteração realizada com sucesso!');
+
         return redirect()->action('EstadoMaterialController@index');
     }
 
@@ -130,6 +135,8 @@ class EstadoMaterialController extends Controller
     {
         $estados = EstadoMaterial::findOrFail($id);
         $estados->delete();
+
+         Session::flash('mensagem' , 'Excluído com sucesso!');
 
         return redirect()->action('EstadoMaterialController@index');  
  }

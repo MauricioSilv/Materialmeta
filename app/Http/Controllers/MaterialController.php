@@ -10,6 +10,7 @@ use App\Professor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\User;
+use Session;
 
 class MaterialController extends Controller
 {
@@ -34,8 +35,8 @@ class MaterialController extends Controller
         //->get();
         //$material = Material::select('*');
        if($request->has('pesquisa')){
-        $materiais->where('material.nome', 'like', '%' .$request->get('pesquisa'). '%');
-       }
+         $materiais->where('material.nome', 'like', '%' .$request->get('pesquisa'). '%');
+        }
 
        $materiais = $materiais->get();
 
@@ -93,6 +94,8 @@ class MaterialController extends Controller
         $material->estado_material_id = $request->get('estado_id');
         $material->tipo_material_id = $request->get('tipo_id');
         $material->save();
+
+         Session::flash('mensagem' , 'Criado com sucesso!');
         
         return redirect()->action('MaterialController@index');
     }
@@ -105,8 +108,9 @@ class MaterialController extends Controller
      */
     public function show()
     {
-        //
- }
+
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -144,6 +148,8 @@ class MaterialController extends Controller
         $material->estado_material_id = $request->input("estado_id");
         $material->save();
 
+         Session::flash('mensagem' , 'Alteração realizada com sucesso!');
+
         return redirect()->action('MaterialController@index');
 
     }
@@ -158,6 +164,8 @@ class MaterialController extends Controller
     {
         $material = Material::findOrFail($id);
         $material->delete();
+
+         Session::flash('mensagem' , 'Excluído com sucesso!');
 
         return redirect()->route('materiais.index');
     }

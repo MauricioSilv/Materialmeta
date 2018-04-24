@@ -1,6 +1,13 @@
 @extends('materialhome')
 @section('content-header')
     <section class="content-header">
+        @if(Session::has('mensagem'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{ Session::get('mensagem') }}
+             
+    </div>
+     @endif
       <h1>
         <i class="fa fa-users"></i> Professores
         <small>Gerenciamento dos professores</small>
@@ -21,15 +28,17 @@
                             @if($professors->count())
                                     <thead>
                                     <tr>
-                                        <th>NOME</th>
-                                        <th>DATA DE CRIAÇÃO</th>
-                                        <th>AÇÃO</th>
+                                        <th width="1%">Cód</th>
+                                        <th width="25%">Nome</th>
+                                        <th width="15%">Data de Criação</th>
+                                        <th>Ações</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($professors as $professor)
                                         <tr>
+                                            <td>{{ $professor->id}}</td>
                                             <td>{{$professor->nome}}</td>
                                             <td>{{date('d/m/Y', strtotime($professor->created_at))}}</td>
                                             <td>

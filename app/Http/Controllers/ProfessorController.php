@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Professor;
 use Illuminate\Http\Request;
+use Session;
 
 class ProfessorController extends Controller
 {
@@ -65,6 +66,8 @@ class ProfessorController extends Controller
 
          $professor->save();
 
+          Session::flash('mensagem' , 'Criado com sucesso!');
+
          return redirect()->route('professors.index');                               
     }
 
@@ -107,10 +110,9 @@ class ProfessorController extends Controller
 
             'nome' => 'required|min:3',
             'contato' => 'required|numeric',
-            'sexo' => 'required|boolean',
+            'sexo' => 'required',
             'email' => 'required|email|',
             'endereco' => 'required|string|min:3',
-            'senha' => 'required|min:3|',
         ]);
          
         $professor = Professor::findOrFail($id);
@@ -123,6 +125,8 @@ class ProfessorController extends Controller
         $professor->senha = bcrypt($request->input("senha"));
        
         $professor->save();
+
+         Session::flash('mensagem' , 'Alteração realizada com sucesso!');
 
         return redirect()->route('professors.index');
     }
@@ -137,6 +141,8 @@ class ProfessorController extends Controller
     {
         $professor = Professor::findOrFail($id);
         $professor->delete();
+
+         Session::flash('mensagem' , 'Excluído com sucesso!');
 
         return redirect()->route('professors.index');
     }

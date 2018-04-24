@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	 <title>MaterialMETA</title>
+	 <title>MaterialMeta</title>
 	 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   @include('bootstrap.layout')
  <style type="text/css">
@@ -21,7 +21,7 @@
   <!--aqui entra o topo-->
   @include('topo')
   <!--aqui entra o lado esquerdo (aside)-->
-  @include('ladoE')
+  @include('ladoleft')
   <!--Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 

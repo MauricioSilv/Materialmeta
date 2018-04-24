@@ -44,7 +44,7 @@
                                     <label for="nome-field">Sexo:</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <select class="form-control show-tick" id="sexo-field" name="sexo">
+                                            <select class="form-control show-tick" id="sexo" name="sexo">
                                                 <option value="{{ is_null(old("sexo")) ? $professor->sexo : old("sexo") }}">-- Selecione --</option>
                                                 <option value="masculino">Masculino</option>
                                                 <option value="feminino">Feminino</option>

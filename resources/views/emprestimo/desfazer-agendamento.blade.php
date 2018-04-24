@@ -2,10 +2,11 @@
 @section('conteudo')
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<i class="fa fa-refresh"></i> Devolução de Material
+			<i class="far fa-clock"></i> Desfazer Agendamento do Material
 		</div>
 		<div class="panel-body">
-			<form method="POST" action="{{ action('EmprestimoController@update' , $material->id) }}">
+			<form method="POST" action="{{ action('AgendamentoController@updateDesfazer', $material->id) }}">
+				{!! csrf_field() !!} 
 				<input type="hidden" name="_method" value="PUT">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 {{-- 
@@ -30,7 +31,7 @@
 				</div> -->
 
 				<button class="btn btn-success">
-					<i class="fas fa-check-circle"></i> Registrar Devolução
+					<i class="fas fa-check-circle"></i> Desfazer
 				</button>
 
 				<a href="/materiais" class="btn btn-default">

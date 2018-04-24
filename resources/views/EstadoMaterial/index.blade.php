@@ -1,6 +1,13 @@
 @extends('materialhome')
 @section('content-header')
 	<section class="content-header">
+		@if(Session::has('mensagem'))
+  	<div class="alert alert-success alert-dismissible" role="alert">
+  		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	 	{{ Session::get('mensagem') }}
+  			 
+	</div>
+  	 @endif
 	  <h1>
 	    <i class="fa fa-archive"></i> Condições dos Materiais
 	    <small>Gerenciamento de materiais</small>
@@ -20,7 +27,7 @@
 		@if(count($estados))
 			<thead>
 				<tr>
-					<th width="1%">Código</th>
+					<th width="1%">Cód</th>
 					<th>Estado Atual</th>
 					<th width="35%">Ações</th>
 				</tr>

@@ -2,7 +2,7 @@
 @section('conteudo')
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<i class="fa fa-refresh"></i> Empréstimo de Material
+			<i class="fas fa-exchange-alt"></i> Empréstimo de Material
 		</div>
 		<div class="panel-body">
 			<form method="POST" action="{{ action('EmprestimoController@store') }}">

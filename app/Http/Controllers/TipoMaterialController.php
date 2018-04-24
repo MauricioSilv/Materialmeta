@@ -32,6 +32,8 @@ class TipoMaterialController extends Controller
 
         $tipomaterial->save();
 
+         Session::flash('mensagem' , 'Criado com sucesso!');
+
         if($tipomaterial->save())
         {
             return redirect()->action('TipoMaterialController@index');
