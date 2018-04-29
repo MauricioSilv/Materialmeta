@@ -50,7 +50,7 @@ class ProfessorController extends Controller
             'sexo' => 'required|',
             'email' => 'required|email|',
             'endereco' => 'required|string|min:3',
-            'senha' => 'required|min:3|',
+            'password' => 'required|min:3|',
         ]);
         $professor = new Professor();
 
@@ -62,7 +62,7 @@ class ProfessorController extends Controller
 
          $professor->email = $request->input("email");                               
          $professor->endereco = $request->input("endereco");                               
-         $professor->senha = bcrypt($request->input("senha"));
+         $professor->password = bcrypt($request->input("password"));
 
          $professor->save();
 
@@ -122,7 +122,7 @@ class ProfessorController extends Controller
         $professor->sexo = $request->input("sexo");
         $professor->email = $request->input("email");
         $professor->endereco = $request->input("endereco");
-        $professor->senha = bcrypt($request->input("senha"));
+        $professor->password = bcrypt($request->input("password"));
        
         $professor->save();
 

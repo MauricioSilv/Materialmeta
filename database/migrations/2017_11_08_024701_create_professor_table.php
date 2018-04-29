@@ -19,9 +19,10 @@ class CreateProfessorTable extends Migration
             $table->string('nome');
             $table->string('contato');
             $table->string('sexo');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('endereco');
-            $table->string('senha');
+            $table->string('password', 60);
+            $table->rememberToken();
         });
     }
 

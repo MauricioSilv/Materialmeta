@@ -90,13 +90,13 @@
                                         </div>
                                             </div>
                                         <div class="col-sm-12">
-                                         <div class="form-group @if($errors->has('senha')) has-error @endif">
+                                         <div class="form-group @if($errors->has('password')) has-error @endif">
                                          	<label for="nome-field">
                                          		Senha:
                                          	</label>
                                          	<div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="password" id="password" name="senha" class="form-control" value="{{ old("senha") }}"/>
+                                                    <input type="password" id="password" name="password" class="form-control" value="{{ old("password") }}"/>
                                                 </div>
                                             </div>
                                            </div>

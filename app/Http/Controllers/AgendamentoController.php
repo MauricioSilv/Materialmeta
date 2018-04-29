@@ -14,13 +14,13 @@ class AgendamentoController extends Controller
 {
     public function listar($id)
     {
-    	$professor = Professor::all();
+    	$professores = Professor::all();
     	$material = Material::find($id);
     	$emprestimo = Emprestimo::all();
 
     	return view('emprestimo.confirmar-agendamento',[
 
-    		'professor' => $professor,
+    		'professores' => $professores,
     		'material' => $material,
     		'material_id' =>$id,
 
@@ -46,7 +46,7 @@ class AgendamentoController extends Controller
 
    		return view('emprestimo.desfazer-agendamento', [
 
-   			'professor' =>$professor,
+   			'professores' =>$professor,
    			'material' => $materiais,
    			'material_id' =>$id,
         'emprestimo' =>$emprestimo,

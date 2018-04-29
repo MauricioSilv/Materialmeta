@@ -9,7 +9,7 @@
 				{!! csrf_field() !!} 
 				<input type="hidden" name="_method" value="PUT">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-{{-- 
+
 				 <div class="form-group">
 					<label>Professor</label>
 					<select class="form-control" name="professor_id">
@@ -17,7 +17,7 @@
 							<option value="{{ $professor->id }}">{{ $professor->nome}}</option>
 						@endforeach
 					</select>
-				</div>  --}}
+				</div> 
 
 				<div class="form-group">
 					<label>Material</label>

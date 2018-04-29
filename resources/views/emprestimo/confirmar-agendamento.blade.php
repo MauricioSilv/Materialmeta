@@ -7,7 +7,7 @@
 		<div class="panel-body">
 			<form method="POST" action="{{ action('AgendamentoController@agendar') }}">
 				{!! csrf_field() !!} 
-{{-- 
+
 				 <div class="form-group">
 					<label>Professor</label>
 					<select class="form-control" name="professor_id">
@@ -15,7 +15,7 @@
 							<option value="{{ $professor->id }}">{{ $professor->nome}}</option>
 						@endforeach
 					</select>
-				</div>  --}}
+				</div> 
 
 				<div class="form-group">
 					<label>Material</label>
