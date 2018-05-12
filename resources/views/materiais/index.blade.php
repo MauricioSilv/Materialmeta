@@ -11,13 +11,17 @@
   			 
 	</div>
   	 @endif
-	  <h1>
+  	 <!--fim do if alerts-->
+	   <h1>
 	    <i class="fa fa-archive"></i> Cadastro de Materiais
 	    <small>Gerenciamento de materiais</small>
-		<a href="{{ action('MaterialController@create') }}" class="btn pull-right btn-success">
+	  
+  	 @if(Auth::user()->perfil !== 'professor')
+		<a href="{{ action('MaterialController@create') }}"    class="btn pull-right btn-success">
 			<i class="fa fa-plus-circle"></i> Criar novo Material
 		</a>
 	  </h1>
+	 @endif
 	</section>
 
 @endsection
@@ -47,14 +51,15 @@
 			<thead>
 				<tr>
 					<th width="1%">Cód.</th>
-					<th width="40%">Nome/Estado/Tipo</th>
-					<th width="6%">Marca</th>
-					<th width="10%">Status</th>
+					<th width="30%">Nome/Estado/Tipo</th>
+					<th width="10%">Marca</th>
+					<th width="13%">Status</th>
 					<th width="50%">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($materiais as $material)
+				 
 					<tr>
 						<td>{{ $material->id }}</td>
 						<td>
@@ -63,22 +68,23 @@
 							<p>Tipo: {{  $material->tipo }}</p>
 						</td>
 						<td>{{ $material->marca }}</td>
-					@if($material->status_emprestimo == 1)	
+					@if($material->status_material == 1)	
 						<td><i class="fas fa-circle" style="color: rgb(0,230,0);"></i> Disponível</td>
-						@elseif($material->status_emprestimo == 2)
+						@elseif($material->status_material == 2)
 						<td><i class="fas fa-circle" style="color: rgb(255, 153, 0);"></i> Agendado</td>
-						@elseif($material->status_emprestimo == 3)
+						@elseif($material->status_material == 3)
 						<td><i class="fas fa-circle" style="color: rgb(230, 57, 0);"></i> Emprestado</td>
 						@endif	
 						<td>
 			
-					 	@switch($material->status_emprestimo)
-					 	 @case($material->status_emprestimo == 1)
-							<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btm-sm btn-success" >
-								<i class="far fa-thumbs-up"></i> Emprestar
-							</a>
+					 	@switch($material->status_material)
+					 	 @case($material->status_material == 1)
 							<a href="{{ action('AgendamentoController@listar', $material->id) }}" class="btn btn-warning">
 								 <i class="far fa-clock"></i> Agendar
+							</a>
+						@if(Auth::user()->perfil !== 'professor')
+							<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btm-sm btn-success" >
+								<i class="far fa-thumbs-up"></i> Emprestar
 							</a>
 							
 							<a href="{{action('MaterialController@edit' ,$material->id)}}" class="btn btn-default">
@@ -90,8 +96,9 @@
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
                              </form>
+                          @endif
                              @break
-                           @case($material->status_emprestimo == 3)
+                           @case($material->status_material == 3)
 
 					   	<a href="{{ action('EmprestimoController@edit', $material->id) }}" class="btn btm-sm btn-danger">
 					   		<i class="fas fa-exchange-alt"></i> Devolução
@@ -127,22 +134,26 @@
                                                 </div>
                                             </div>
                                         </div>
-
+						  	
                           @endforeach
 		   				@break
                             
-                          @case($material->status_emprestimo == 2)
+                          @case($material->status_material == 2)
+                          @if(Auth::user()->perfil !== 'professor')
 							<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btm-sm btn-success" >
 								<i class="fas fa-check-circle"></i> Confirmar
 							</a>
+						  @else
 							<a href="{{ action('AgendamentoController@desfazer', $material->id) }}" class="btn btm-sm btn-danger">
 								<i class="fas fa-times"></i> Desfazer
 							</a>
+						 @endif
                             @break
                             @endswitch
 				
 						</td>
 					</tr>
+
 				@endforeach
 			</tbody>
 			@else

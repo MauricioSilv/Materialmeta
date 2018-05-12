@@ -41,7 +41,7 @@ class TipoMaterialController extends Controller
     }
     public function edit($id)
     {
-        $tipomaterial = TipoMaterial::findOrfail($id);
+        $tipomaterial = TipoMaterial::findOrfail($id); // return Model;
 
         return view('tipomaterial.edit', array('tipos' => $tipomaterial));
     }
@@ -63,7 +63,7 @@ class TipoMaterialController extends Controller
     }
     public function destroy($id)
     {
-        $tipomaterial = TipoMaterial::find($id);
+        $tipomaterial = TipoMaterial::find($id); // return Model;
 
         $tipomaterial->delete();
 

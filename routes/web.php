@@ -10,16 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'professor'], function(){
-	Route::get('/prof', 'UseProfessorController@index');
-	Route::get('/prof/login', 'UseProfessorController@login');
-	Route::post('/prof/loginfo', 'UseProfessorController@postLogin');
-	
-
-});
-
-
-
 Route::resource('emprestar', 'EmprestimoController');
 Route::resource('professors', 'ProfessorController');
 Route::resource('estadomaterial', 'EstadoMaterialController');

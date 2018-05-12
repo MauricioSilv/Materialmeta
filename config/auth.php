@@ -40,11 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'professor' => [
-            'driver' => 'session',
-            'provider' => 'professor',
-        ],
-
+    
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -73,10 +69,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'professor' => [
-            'driver' => 'eloquent',
-            'model' => App\Professor::class,
-        ],
+        
 
         // 'users' => [
         //     'driver' => 'database',

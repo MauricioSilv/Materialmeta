@@ -12,13 +12,17 @@
 
 				 <div class="form-group">
 					<label>Professor</label>
+				@if(Auth::user()->perfil == 'professor')
+					
+					<input type="text" name="professor_id" disabled="disabled" value="{{Auth::user()->name}}" class="form-control" /> 
+				@else
 					<select class="form-control" name="professor_id">
 						@foreach($professores as $professor)
 							<option value="{{ $professor->id }}">{{ $professor->nome}}</option>
 						@endforeach
 					</select>
-				</div> 
-
+				@endif
+			</div>
 				<div class="form-group">
 					<label>Material</label>
 					<input type="hidden" name="material_id" value="{{ $material_id }}">

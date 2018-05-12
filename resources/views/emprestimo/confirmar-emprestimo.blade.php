@@ -10,8 +10,8 @@
 				<div class="form-group">
 					<label>Professor</label>
 					<select class="form-control" name="professor_id">
-						@foreach($professores as $professor)
-							<option value="{{ $professor->id }}">{{ $professor->nome }}</option>
+						@foreach($users as $user)
+							<option value="{{ $user->id }}">{{ $user->name }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -32,7 +32,7 @@
 				</button>
 
 				<a href="/materiais" class="btn btn-default">
-					<i class="fa fa-arrow-left"></i> Voltar para a lista
+					<i class="fas fa-reply"></i> Voltar para a lista
 				</a>
 			</form>
 		</div>

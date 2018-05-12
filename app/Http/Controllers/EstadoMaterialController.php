@@ -15,7 +15,7 @@ class EstadoMaterialController extends Controller
      */
     public function index()
     {
-        $estados = EstadoMaterial::all();
+        $estados = EstadoMaterial::all();//  return collection;
 
          return view('EstadoMaterial.index',[
 
@@ -34,7 +34,7 @@ class EstadoMaterialController extends Controller
     public function create()
     {
 
-        $estados = EstadoMaterial::all();
+        $estados = EstadoMaterial::all(); // return Collection;
         return view('EstadoMaterial.create', [
 
             'estados' =>$estados
@@ -62,7 +62,7 @@ class EstadoMaterialController extends Controller
 
         $estados->estado_atual = $request->get("estado_atual");
 
-        $estados->save();
+        $estados->save(); // return Booleam;
 
          Session::flash('mensagem' , 'Criado com sucesso!');
 
@@ -88,7 +88,7 @@ class EstadoMaterialController extends Controller
      */
     public function edit($id)
     {
-        $estados = EstadoMaterial::findOrFail($id);
+        $estados = EstadoMaterial::findOrFail($id);// return Model;
 
         return view('EstadoMaterial.edita', [
 
@@ -118,10 +118,10 @@ class EstadoMaterialController extends Controller
 
         $estados->estado_atual = $request->input("estado_atual");
 
-        $estados->save();
+        $estados->save(); // return Booleam;
 
          Session::flash('mensagem' , 'Alteração realizada com sucesso!');
-
+        
         return redirect()->action('EstadoMaterialController@index');
     }
 
@@ -133,8 +133,8 @@ class EstadoMaterialController extends Controller
      */
     public function destroy($id)
     {
-        $estados = EstadoMaterial::findOrFail($id);
-        $estados->delete();
+        $estados = EstadoMaterial::findOrFail($id); // return Model;
+        $estados->delete();// booleam;
 
          Session::flash('mensagem' , 'Excluído com sucesso!');
 

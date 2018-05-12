@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Emprestimo;
-use App\Professor;
 use App\Material;
 use App\User;
 use Session;
@@ -14,13 +13,17 @@ class AgendamentoController extends Controller
 {
     public function listar($id)
     {
-    	$professores = Professor::all();
+    	 $users = DB::table('users')
+                   ->where([
+
+                    ['perfil', '=', 'professor'], 
+                    ])->get();
     	$material = Material::find($id);
     	$emprestimo = Emprestimo::all();
 
     	return view('emprestimo.confirmar-agendamento',[
 
-    		'professores' => $professores,
+    		'professores' => $users,
     		'material' => $material,
     		'material_id' =>$id,
 
@@ -32,21 +35,31 @@ class AgendamentoController extends Controller
    {
    		 $materials = DB::table('material')
         ->where('id', $request->get('material_id'))
-        ->update(['status_emprestimo' => 2]);
+        ->update(['status_material' => 2]);
+
+      $reservado = DB::table('emprestimo')
+      ->where('id', $request->get('material_id'))
+      ->update(['status_emprestimo' => 'Reservado']);
+      
+      
 
         return redirect()->action('MaterialController@index');
    }
 
    public function desfazer($id)
    {	
-   		$professor = Professor::all();
+   		      $users = DB::table('users')
+                   ->where([
+
+                    ['perfil', '=', 'professor'], 
+                    ])->get();
    		$materiais = Material::find($id);
    		$emprestimo = Emprestimo::all();
 
 
    		return view('emprestimo.desfazer-agendamento', [
 
-   			'professores' =>$professor,
+   			'professores' =>$users,
    			'material' => $materiais,
    			'material_id' =>$id,
         'emprestimo' =>$emprestimo,
@@ -60,7 +73,11 @@ class AgendamentoController extends Controller
    {
    		$desfazer = DB::table('material')
    		->where('id', $request->get('material_id'))
-   		->update(['status_emprestimo' => 1]);
+   		->update(['status_material' => 1]);
+
+      $reservado = DB::table('emprestimo')
+      ->where('id', $request->get('material_id'))
+      ->update(['status_emprestimo' => 'Livre']);
 
    		return redirect()->action('MaterialController@index');
 

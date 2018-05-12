@@ -4,7 +4,6 @@
     <section class="content-header">
       <h1>
         <i class="fa fa-edit"></i> Editar Professor
-        <small>{{$professor->nome}}</small>
       </h1>
     </section>
 @endsection
@@ -24,43 +23,27 @@
                 <i class="fa fa-user"></i> Editar Professor
             </div>
                         <div class="panel-body">
-                            <form action="{{ route('professors.update',$professor->id) }}" method="POST">
+                            <form action="{{ route('professors.update',$user->id) }}" method="POST">
                                 <input type="hidden" name="_method" value="PUT">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                <div class="form-group @if($errors->has('nome')) has-error @endif">
-                                    <label for="nome-field">Nome:</label>
+                                <div class="form-group @if($errors->has('name')) has-error @endif">
+                                    <label for="nome-field">Nome</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="nome-field" name="nome" class="form-control" value="{{ is_null(old("nome")) ? $professor->nome : old("nome") }}"/>
+                                            <input type="text" id="nome-field" name="name" class="form-control" value="{{ is_null(old("name")) ? $user->name : old("name") }}"/>
                                         </div>
                                     </div>
                                     @if($errors->has("nome"))
-                                        <span class="help-block">{{ $errors->first("nome") }}</span>
-                                    @endif
-                                </div>
-                    
-                                <div class="form-group @if($errors->has('sexo')) has-error @endif">
-                                    <label for="nome-field">Sexo:</label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <select class="form-control show-tick" id="sexo" name="sexo">
-                                                <option value="{{ is_null(old("sexo")) ? $professor->sexo : old("sexo") }}">-- Selecione --</option>
-                                                <option value="masculino">Masculino</option>
-                                                <option value="feminino">Feminino</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    @if($errors->has("sexo"))
-                                        <span class="help-block">{{ $errors->first("sexo") }}</span>
+                                        <span class="help-block">{{ $errors->first("name") }}</span>
                                     @endif
                                 </div>
 
                                 <div class="form-group @if($errors->has('email')) has-error @endif">
-                                    <label for="nome-field">Email:</label>
+                                    <label for="nome-field">Email</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="email" name="email" class="form-control" value="{{ is_null(old("email")) ? $professor->email : old("email") }}"/>
+                                            <input type="text" id="email" name="email" class="form-control" value="{{ is_null(old("email")) ? $user->email : old("email") }}"/>
                                         </div>
                                     </div>
                                     @if($errors->has("email"))
@@ -69,18 +52,18 @@
                                 </div>
 
 
-                                <div class="form-group @if($errors->has('endereco')) has-error @endif">
-                                    <label for="nome-field">Endereco:</label>
+                                <div class="form-group @if($errors->has('password')) has-error @endif">
+                                    <label for="nome-field">Senha</label>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="endereco-field" name="endereco" class="form-control" value="{{ is_null(old("endereco")) ? $professor->endereco : old("endereco") }}"/>
+                                            <input type="password" minlength="4" id="password" name="password" class="form-control">
                                         </div>
                                     </div>
-                                    @if($errors->has("idade"))
-                                        <span class="help-block">{{ $errors->first("endereco") }}</span>
+                                    @if($errors->has("password"))
+                                        <span class="help-block">{{ $errors->first("password") }}</span>
                                     @endif
                                 </div>
-                                <div class="form-group @if($errors->has('contato')) has-error @endif">
+                               {{--  <div class="form-group @if($errors->has('contato')) has-error @endif">
                                     <label for="nome-field">Telefone:</label>
                                     <div class="form-group">
                                         <div class="form-line">
@@ -90,8 +73,8 @@
                                     @if($errors->has("contato"))
                                         <span class="help-block">{{ $errors->first("contato") }}</span>
                                     @endif
-                                </div>
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle fa-lg"></i> Salvar</button>
+                                </div> --}}
+                                <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle fa-lg"></i> Salvar</button>
                                 <a class="btn btn-default pull-right" href="{{ route('professors.index') }}"><i class="fas fa-reply"></i> Voltar para a lista</a>
                             </form>
                         </div>

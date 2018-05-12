@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Emprestimo;
 use Illuminate\Http\Request;
-use App\Professor;
 use App\Material;
 use App\User;
 use Session;
@@ -43,16 +42,17 @@ class EmprestimoController extends Controller
 
         $emprestimo = new Emprestimo;
 
-        $emprestimo->professor_id = $request->get('professor_id');
         $emprestimo->material_id = $request->get('material_id');
         $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
-        $emprestimo->user_id = \Auth::id();
+        $emprestimo->user_id = $request->get("professor_id");
+        $emprestimo->status_emprestimo = 'Ativo';
+        $emprestimo->data_agendamento = date('Y-m-d H:i:s');
         
         $emprestimo->save();
 
         $materials = DB::table('material')
         ->where('id', $request->get('material_id'))
-        ->update(['status_emprestimo' => 3]);
+        ->update(['status_material' => 3]);
 
          Session::flash('mensagem' , 'Emprestimo realizado com sucesso!');
 
@@ -70,7 +70,12 @@ class EmprestimoController extends Controller
     public function show($id)
     {   
         // dd($id);
-        $professores = Professor::all();
+         $users = DB::table('users')
+                   ->where([
+
+                    ['perfil', '=', 'professor'], 
+                    ])->get();
+
         $material = Material::find($id);
         $emprestimo = Emprestimo::all();
 
@@ -82,7 +87,7 @@ class EmprestimoController extends Controller
         // }
         
         return view('emprestimo.confirmar-emprestimo', [
-            'professores' => $professores,
+            'users' => $users,
             'material' => $material,
             'material_id' => $id,
         ]);
@@ -97,17 +102,25 @@ class EmprestimoController extends Controller
      */
     public function edit($id)
     {
-        $professores = Professor::all();
-        $material = Material::find($id);
-        $emprestimo = Emprestimo::all();
+        
+          $users = DB::table('users')
+                   ->where([
+
+                    ['perfil', '=', 'professor'], 
+                    ])->get();
+
+         $material = Material::find($id);
+        $emprestimo = Emprestimo::find($id);
 
         
         return view('emprestimo.confirmar-devolucao', [
-            'professores' => $professores,
+            'users' => $users,
             'material' => $material,
             'material_id' => $id,
             'emprestimo' => $emprestimo,
-        ]);   
+            'emprestimo_id' =>$id
+        ]);
+
     }
 
     /**
@@ -123,7 +136,11 @@ class EmprestimoController extends Controller
         
         $materiais = DB::table('material')
         ->where('id', $id)
-        ->update(['status_emprestimo' => 1]);
+        ->update(['status_material' => 1]);
+
+        $devolucao = DB::table('emprestimo')
+        ->where('material_id', $request->get('material_id'))
+        ->update(['status_emprestimo'=> 'finalizado']);
 
         $emp = DB::table('emprestimo')
         ->whereNull('devolucao')

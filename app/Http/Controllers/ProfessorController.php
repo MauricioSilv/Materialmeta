@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Professor;
+use App\User;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessorController extends Controller
 {
@@ -15,11 +17,18 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        $professors = Professor::all();
+        
+        $users = DB::table('users')
+                   ->where([
+
+                    ['perfil', '=', 'professor'], 
+
+
+                    ])->get();
 
         return view('professors.index',[
 
-            'professors' =>$professors
+            'users' =>$users
 
 
         ]);
@@ -43,28 +52,23 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        // $this->validate($request, [
 
-            'nome' => 'required|min:3',
-            'contato' => 'required|numeric',
-            'sexo' => 'required|',
-            'email' => 'required|email|',
-            'endereco' => 'required|string|min:3',
-            'password' => 'required|min:3|',
-        ]);
-        $professor = new Professor();
+        //     'nome' => 'required|min:3',
+        //     'contato' => 'required|numeric',
+        //     'sexo' => 'required|',
+        //     'email' => 'required|email|',
+        //     'endereco' => 'required|string|min:3',
+        //     'password' => 'required|min:3|',
+        // ]);
+        $user = new User();
 
-        $professor->nome = $request->input("nome");
+        $user->name = $request->input("name");
+        $user->perfil = 'professor';
+        $user->email = $request->input("email");                                                              
+        $user->password = bcrypt($request->input("password"));
 
-         $professor->contato = $request->input("contato");
-
-         $professor->sexo = $request->input("sexo");
-
-         $professor->email = $request->input("email");                               
-         $professor->endereco = $request->input("endereco");                               
-         $professor->password = bcrypt($request->input("password"));
-
-         $professor->save();
+         $user->save();
 
           Session::flash('mensagem' , 'Criado com sucesso!');
 
@@ -92,9 +96,9 @@ class ProfessorController extends Controller
      */
     public function edit($id)
     {
-        $professor = Professor::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('professors.edita', compact('professor'));
+        return view('professors.edita', compact('user'));
     }
 
     /**
@@ -106,22 +110,19 @@ class ProfessorController extends Controller
      */
     public function update($id, Request $request)
     {
-         $this->validate($request, [
+        //  $this->validate($request, [
 
-            'nome' => 'required|min:3',
-            'contato' => 'required|numeric',
-            'sexo' => 'required',
-            'email' => 'required|email|',
-            'endereco' => 'required|string|min:3',
-        ]);
+        //     'nome' => 'required|min:3',
+        //     'contato' => 'required|numeric',
+        //     'sexo' => 'required',
+        //     'email' => 'required|email|',
+        //     'endereco' => 'required|string|min:3',
+        // ]);
          
-        $professor = Professor::findOrFail($id);
+        $professor = User::findOrFail($id);
 
-        $professor->nome = $request->input("nome");
-        $professor->contato = $request->input("contato");
-        $professor->sexo = $request->input("sexo");
+        $professor->name = $request->input("name");
         $professor->email = $request->input("email");
-        $professor->endereco = $request->input("endereco");
         $professor->password = bcrypt($request->input("password"));
        
         $professor->save();
@@ -139,7 +140,7 @@ class ProfessorController extends Controller
      */
     public function destroy($id)
     {
-        $professor = Professor::findOrFail($id);
+        $professor = User::findOrFail($id);
         $professor->delete();
 
          Session::flash('mensagem' , 'Excluído com sucesso!');

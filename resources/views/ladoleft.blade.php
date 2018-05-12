@@ -29,12 +29,8 @@
                 <span>Materiais</span>
             </a>
         </li>
+        @if(Auth::user()->perfil !== 'professor')
         <li>
-            <a href="/professors">
-                <i class="fas fa-users"></i>
-                <span>Professores</span>
-            </a>
-        </li>
          <li>
             <a href="/estadomaterial">
                 <i class="fas fa-archive"></i>
@@ -47,6 +43,13 @@
                 <span>Tipo do Material</span>
             </a>
         </li>
+        <li>
+            <a href="/professors">
+                <i class="fas fa-users"></i>
+                <span>Professores</span>
+            </a>
+        </li>
+        @endif
       {{--
         <li class="treeview">
           <a href="#">

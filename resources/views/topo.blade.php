@@ -16,17 +16,16 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <span class="hidden-xs">{{ Auth::user()->name }}
-              
-              </span>
-              <i class="far fa-user">
+             
+              <i class="fas fa-user">
                   
               </i>
             </a>
             <ul class="dropdown-menu">
              
               <li class="user-header">
-
+                <h3 style="color: #fff;">{{Auth::user()->perfil}} | {{ Auth::user()->name}}</h3>
+              <hr>
                 <p>
                    {{ Auth::user()->email }}
                   <small></small>
@@ -41,7 +40,7 @@
                       document.getElementById('logout-form').submit();">
                       <button type="button" class="btn btn-outline-secondary">
                         {{ __('Sair') }}
-                         <i class="fas fa-share-square"></i>
+                         <i class="fas fa-power-off"></i>
                         
                       </button>
                   </a>

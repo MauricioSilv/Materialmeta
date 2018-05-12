@@ -10,23 +10,28 @@
 
 				 <div class="form-group">
 					<label>Professor</label>
-					<select class="form-control" name="professor_id">
+				@if(Auth::user()->perfil == 'professor')
+					
+					<input type="text" disabled="disabled" class="form-control" name="professor" value="{{Auth::user()->name}}">
+				
+				@else
+				<select class="form-control" name="professor_id">
 						@foreach($professores as $professor)
-							<option value="{{ $professor->id }}">{{ $professor->nome}}</option>
+							<option value="{{ $professor->id }}">{{ $professor->nome }}</option>
 						@endforeach
 					</select>
-				</div> 
-
+				@endif
+			</div>
 				<div class="form-group">
 					<label>Material</label>
 					<input type="hidden" name="material_id" value="{{ $material_id }}">
 					<input type="text" disabled="disabled" value="{{ $material->nome }}" class="form-control" name="material"/>
 				</div>
-
-				<!-- <div class="form-group">
+{{--  Falta  terminar;
+				<div class="form-group">
 					<label>Data</label>
-					<input type="date" class="form-control" name="data"/>
-				</div> -->
+					<input type="date" class="form-control" name="data" value="{{Auth::user()->data_agendamento}}" />
+				</div> --}}
 
 				<button class="btn btn-success">
 					<i class="fas fa-check-circle"></i> Registrar Agendamento

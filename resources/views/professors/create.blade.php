@@ -17,38 +17,20 @@
                                     <form action="{{ route('professors.store') }}" method="POST">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="col-sm-6">
-                                        <div class="form-group @if($errors->has('nome')) has-error @endif">
+                                        <div class="form-group @if($errors->has('name')) has-error @endif">
                                             <label for="nome-field">Nome:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="nome-field" name="nome" class="form-control" value="{{ old("nome") }}"/>
+                                                    <input type="text" id="nome-field" name="name" class="form-control" value="{{ old("name") }}"/>
                                                 </div>
                                             </div>
-                                            @if($errors->has("nome"))
-                                                <span class="help-block">{{ $errors->first("nome") }}</span>
+                                            @if($errors->has("name"))
+                                                <span class="help-block">{{ $errors->first("name") }}</span>
                                             @endif
                                         </div>
                                         </div>
                                         <!---->
-                                        <div class="col-sm-6">
-                                        <div class="form-group @if($errors->has('sexo')) has-error @endif">
-                                            <label for="nome-field">Sexo:</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <select class="form-control show-tick" id="sexo-field" name="sexo">
-                                                        <option value="{{ old("sexo") }}">-- Please select --</option>
-                                                        <option value="Masculino">Masculino</option>
-                                                        <option value="Feminino">Feminino</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            @if($errors->has("sexo"))
-                                                <span class="help-block">{{ $errors->first("sexo") }}</span>
-                                            @endif
-                                        </div>
-                                        </div>
-                                        <!---->
-                                         <div class="col-sm-6">
+                                         {{-- <div class="col-sm-6">
                                         <div class="form-group @if($errors->has('contato')) has-error @endif">
                                             <label for="nome-field">Telefone:</label>
                                             <div class="form-group">
@@ -60,7 +42,7 @@
                                                 <span class="help-block">{{ $errors->first("contato") }}</span>
                                             @endif
                                         </div>
-                                            </div>
+                                            </div> --}}
                                             <!---->
                                             <div class="col-sm-6">
                                          <div class="form-group @if($errors->has('email')) has-error @endif">
@@ -76,7 +58,7 @@
                                        </div>
                                          
                                             <!---->
-                                            <div class="col-sm-12">
+                                          {{--   <div class="col-sm-12">
                                         <div class="form-group @if($errors->has('endereco')) has-error @endif">
                                             <label for="nome-field">Endereço:</label>
                                             <div class="form-group">
@@ -88,15 +70,15 @@
                                                 <span class="help-block">{{ $errors->first("endereco") }}</span>
                                             @endif
                                         </div>
-                                            </div>
+                                            </div> --}}
                                         <div class="col-sm-12">
                                          <div class="form-group @if($errors->has('password')) has-error @endif">
-                                         	<label for="nome-field">
+                                         	<label for="password">
                                          		Senha:
                                          	</label>
                                          	<div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="password" id="password" name="password" class="form-control" value="{{ old("password") }}"/>
+                                                    <input id="password" minlength="3" type="password" class="form-control" name="password" required />
                                                 </div>
                                             </div>
                                            </div>

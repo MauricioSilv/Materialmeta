@@ -6,10 +6,9 @@ use App\Material;
 use App\EstadoMaterial;
 use App\TipoMaterial;
 use App\Emprestimo;
-use App\Professor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\User;
+use App\User;
 use Session;
 
 class MaterialController extends Controller
@@ -21,8 +20,8 @@ class MaterialController extends Controller
      */
     public function index(Request $request)
     {   
-        $emprestimo = Emprestimo::all();
-        $professor = Professor::all();
+        $emprestimo = Emprestimo::all(); // Return Collection
+     
 
         $materiais = Material::select(
             'material.*',
@@ -31,14 +30,14 @@ class MaterialController extends Controller
         )
         ->join('estadomaterial', 'estadomaterial.id', '=', 'material.estado_material_id')
         ->join('tipomaterial', 'tipomaterial.id', '=', 'material.tipo_material_id')
-        ->with(['emprestimos']);
+        ->with(['emprestimos']); // return Builder;
         //->get();
         //$material = Material::select('*');
        if($request->has('pesquisa')){
          $materiais->where('material.nome', 'like', '%' .$request->get('pesquisa'). '%');
         }
 
-       $materiais = $materiais->get();
+       $materiais = $materiais->get(); // collection;
 
       // $material->orderBy('nome', 'asc');
 
@@ -49,8 +48,7 @@ class MaterialController extends Controller
 
             'materiais'=> $materiais,
             'pesquisa' => $request->get('pesquisa'),
-            'emprestimo' => $emprestimo,
-            'professor' => $professor,    
+            'emprestimo' => $emprestimo, 
 
 
        ]);  
@@ -90,7 +88,7 @@ class MaterialController extends Controller
 
         $material->nome = $request->get('nome');
         $material->marca = $request->get('marca');
-        $material->status_emprestimo = 1;
+        $material->status_material = 1;
         $material->estado_material_id = $request->get('estado_id');
         $material->tipo_material_id = $request->get('tipo_id');
         $material->save();
