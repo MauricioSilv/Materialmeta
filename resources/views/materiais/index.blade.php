@@ -99,6 +99,7 @@
                           @endif
                              @break
                            @case($material->status_material == 3)
+                           @if(Auth::user()->perfil !== 'professor')
 
 					   	<a href="{{ action('EmprestimoController@edit', $material->id) }}" class="btn btm-sm btn-danger">
 					   		<i class="fas fa-exchange-alt"></i> Devolução
@@ -136,6 +137,7 @@
                                         </div>
 						  	
                           @endforeach
+                          @endif
 		   				@break
                             
                           @case($material->status_material == 2)
@@ -143,10 +145,13 @@
 							<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btm-sm btn-success" >
 								<i class="fas fa-check-circle"></i> Confirmar
 							</a>
-						  @else
 							<a href="{{ action('AgendamentoController@desfazer', $material->id) }}" class="btn btm-sm btn-danger">
 								<i class="fas fa-times"></i> Desfazer
 							</a>
+						  @else
+							{{-- <a href="{{ action('AgendamentoController@desfazer', $material->id) }}" class="btn btm-sm btn-danger">
+								<i class="fas fa-times"></i> Desfazer
+							</a> --}}
 						 @endif
                             @break
                             @endswitch

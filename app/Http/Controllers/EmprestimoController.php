@@ -74,7 +74,7 @@ class EmprestimoController extends Controller
                    ->where([
 
                     ['perfil', '=', 'professor'], 
-                    ])->get();
+                    ])->get(); // retorna uma collection;
 
         $material = Material::find($id);
         $emprestimo = Emprestimo::all();

@@ -20,6 +20,7 @@ Route::put('agendamento/{id}', 'AgendamentoController@updateDesfazer');
 
 Route::resource('materiais', 'MaterialController');
 Route::resource('tipomateriais', 'TipoMaterialController');
+Route::get('inicio', 'InicioController@inicio');
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 

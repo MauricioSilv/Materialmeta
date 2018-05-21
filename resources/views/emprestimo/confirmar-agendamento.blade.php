@@ -17,7 +17,7 @@
 				@else
 				<select class="form-control" name="professor_id">
 						@foreach($professores as $professor)
-							<option value="{{ $professor->id }}">{{ $professor->nome }}</option>
+							<option value="{{ $professor->id }}">{{ $professor->name }}</option>
 						@endforeach
 					</select>
 				@endif

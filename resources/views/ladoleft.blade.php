@@ -7,7 +7,7 @@
       <!-- /.search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="pesquisa" value="" class="form-control" placeholder="Search...">
+          <input type="text" name="pesquisa" value="" class="form-control" placeholder="Buscar...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -18,7 +18,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-            <a href="/">
+            <a href="/inicio">
                 <i class="fas fa-home"></i>
                 <span>Início</span>
             </a>
@@ -30,19 +30,33 @@
             </a>
         </li>
         @if(Auth::user()->perfil !== 'professor')
-        <li>
-         <li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fas fa-check-circle"></i>
+            <span>Config. Parâmetros</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display: none;">
+            <li>
             <a href="/estadomaterial">
-                <i class="fas fa-archive"></i>
+                <i class="far fa-circle"></i>
                 <span>Estado do Material</span>
             </a>
         </li>
         <li>
             <a href="/tipomateriais">
-                <i class="fas fa-archive"></i>
+                <i class="far fa-circle"></i>
                 <span>Tipo do Material</span>
             </a>
         </li>
+            
+          </ul>
+        </li>
+        <li>
+         
+        
         <li>
             <a href="/professors">
                 <i class="fas fa-users"></i>
