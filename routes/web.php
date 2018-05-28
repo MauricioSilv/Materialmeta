@@ -11,12 +11,15 @@
 |
 */
 Route::resource('emprestar', 'EmprestimoController');
+Route::get('confirmar/{id}', 'EmprestimoController@confirmar');
 Route::resource('professors', 'ProfessorController');
 Route::resource('estadomaterial', 'EstadoMaterialController');
-Route::get('agendamento/{agendamento}', 'AgendamentoController@listar');
+Route::get('agenda/{id}', 'AgendamentoController@listar');
+Route::get('agendprofessor', 'AgendamentoController@agendprofessor');
 Route::post('agendamento', 'AgendamentoController@agendar');
-Route::get('agendamento/{id}/edit', 'AgendamentoController@desfazer');
-Route::put('agendamento/{id}', 'AgendamentoController@updateDesfazer');
+Route::get('agendament/{id}/edit', 'AgendamentoController@desfazer');
+Route::put('agendamentu/{id}', 'AgendamentoController@updateDesfazer');
+Route::get('emprestimos', 'AgendamentoController@listaEmprestimo');
 
 Route::resource('materiais', 'MaterialController');
 Route::resource('tipomateriais', 'TipoMaterialController');

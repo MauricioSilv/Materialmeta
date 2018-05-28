@@ -29,16 +29,11 @@
 					<input type="text" disabled="disabled" value="{{ $material->nome }}" class="form-control" name="material"/>
 				</div>
 
-				<!-- <div class="form-group">
-					<label>Data</label>
-					<input type="date" class="form-control" name="data"/>
-				</div> -->
-
-				<button class="btn btn-success">
+				<button class="btn  btn-block-mobile btn-success">
 					<i class="fas fa-check-circle"></i> Desfazer
 				</button>
 
-				<a href="/materiais" class="btn btn-default">
+				<a href="/inicio" class="btn  btn-block-mobile btn-default">
 					<i class="fas fa-reply"></i> Voltar para a lista
 				</a>
 			</form>

@@ -9,11 +9,8 @@
 	</div>
   	 @endif
 	  	<h1>
-	  		 <i class="fas fa-archive"></i> Tipo dos Materiais
+	  		 <i class="fas fa-archive"></i> Emprestimo de Materiais
         <small>Gerenciamento dos Materiais</small>
-        <a href="{{ action('TipoMaterialController@create') }}" class="btn btn-block-mobile pull-right btn-success">
-            <i class="fa fa-plus-circle"></i> Criar novo Tipo de Material
-        </a>
 	  	</h1>
 <div class="clearfix"><div/>
   </section>
@@ -22,35 +19,32 @@
  <div class="panel panel-primary">
  	<div class="panel-heading">
  		<i class="fa fa-list"></i>
- 		 Tipos de Materiais
+ 		 Todos os Emprestimos
  	</div>
  <div class="panel-body no-padding">
+ 	<div class="table-responsive">
 	<table class="table table-bordered">
-	 @if($tipos->count())
+	 @if($emprestimo->count())
 	 	<thead>
 	 		<tr>
 	 			<th width="1%">Cód</th>
-	 			<th>Tipo Atual</th>
-	 			<th width="35%">Ações</th>
+	 			<th width="25%">Material/Professor</th>
+	 			<th width="16%">Status do Emprestimo</th>
+	 			<th width="13%">Data Emprestimo</th>
+	 			<th>Devolução</th>
 	 		</tr>
 	 	</thead>
 	 	<tbody>
-	 		@foreach ($tipos as $tipo)
+	 		@foreach ($emprestimo as $empre)
                 <tr>
-                	<td>{{ $tipo->id }}</td>
-                	<td>{{ $tipo->tipo_material}}</td>
+                	<td>{{ $empre->id }}</td>
                 	<td>
-						<a href="{{ action('TipoMaterialController@edit', $tipo->id) }}" class="btn btn-default">
-							<i class="fas fa-edit"></i> Editar
-						</a>
-						<form action="{{ action('TipoMaterialController@destroy', $tipo->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
-                          <input type="hidden" name="_method" value="DELETE">
-                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          <button type="submit" class="btn btn-danger">
-                          	<i class="fas fa-trash-alt"></i> Excluir
-                          </button>
-                        </form>
-					</td>
+						<p>Material: {{ $empre->nome }}</p>
+						<p>Professor: {{ $empre->name }}</p>
+                	</td>
+                	<td>{{ $empre->status_emprestimo }}
+                	<td>{{ date('d/m/Y', strtotime($empre->data_emprestimo))}}</td>
+                	<td>{{ date('d/m/Y | H:i:s', strtotime($empre->devolucao))}}</td>
                 </tr>
              @endforeach
 	 	</tbody>

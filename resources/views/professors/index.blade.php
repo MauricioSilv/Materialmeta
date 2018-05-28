@@ -11,10 +11,11 @@
       <h1>
         <i class="fa fa-users"></i> Professores
         <small>Gerenciamento dos professores</small>
-        <a href="{{ route('professors.create') }}" class="btn pull-right btn-success">
+        <a href="{{ route('professors.create') }}" class="btn btn-block-mobile pull-right btn-success">
             <i class="fa fa-plus-circle"></i> Criar novo Professor
         </a>
       </h1>
+      <div class="clearfix"></div>
     </section>
 @endsection
 @section('conteudo')
@@ -23,7 +24,7 @@
                     <div class="panel-heading">
                         <i class="fa fa-list"></i> Lista de Professores
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body no-padding">
                             <table class="table table-bordered">
                         @if(count($users))
                                     <thead>
@@ -72,7 +73,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-reply"></i>
+                                                        <button type="button" class="btn btn-block-mobile btn-secondary" data-dismiss="modal"><i class="fas fa-reply"></i>
 
 FECHAR</button>
                                                     </div>

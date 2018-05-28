@@ -17,7 +17,19 @@ class EmprestimoController extends Controller
      */
     public function index(Request $request)
     {
-      
+        $emprestimos = Emprestimo::select(
+            'emprestimo.*',
+            'material.nome',
+            'users.name'
+    )
+    ->join('material', 'material.id', '=', 'emprestimo.material_id')
+    ->join('users', 'users.id', '=', 'emprestimo.user_id')
+    ->get();
+
+    return view('emprestimo.lista', [
+        'emprestimo' => $emprestimos,
+
+    ]);
     }
 
     /**
@@ -43,7 +55,7 @@ class EmprestimoController extends Controller
         $emprestimo = new Emprestimo;
 
         $emprestimo->material_id = $request->get('material_id');
-        $emprestimo->data_emprestimo = date('Y-m-d H:i:s');
+        $emprestimo->data_emprestimo = $request->get('data_emprestimo');
         $emprestimo->user_id = $request->get("professor_id");
         $emprestimo->status_emprestimo = 'Ativo';
         $emprestimo->data_agendamento = date('Y-m-d H:i:s');
@@ -120,6 +132,23 @@ class EmprestimoController extends Controller
             'emprestimo' => $emprestimo,
             'emprestimo_id' =>$id
         ]);
+
+    }
+
+    public function confirmar($id, Request $request)
+    {
+
+        $materials = DB::table('material')
+        ->where('id', $id)
+        ->update(['status_material' => 3]);
+
+        $confirmar = DB::table('emprestimo')
+        ->where('material_id', $request->get('material_id'))
+        ->update(['status_emprestimo' => 'Ativo']);
+
+        Session::flash('mensagem' , 'Emprestimo realizado com sucesso!');
+
+        return redirect()->action('MaterialController@index');
 
     }
 

@@ -39,7 +39,7 @@
                   <a class="dropdown-item" href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
-                      <button type="button" class="btn btn-outline-secondary">
+                      <button type="button" class="btn btn-block-mobile btn-default">
                         {{ __('Sair') }}
                          <i class="fas fa-power-off"></i>
                         

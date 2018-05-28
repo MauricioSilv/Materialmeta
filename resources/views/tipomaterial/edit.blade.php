@@ -17,7 +17,7 @@
     </ul>
 </div>
 @endif
- <section class="content">
+
  	<div class="panel panel-primary">
  		 <div class="panel-heading">
                 <i class="fa fa-edit"></i> Editar Material
@@ -31,15 +31,15 @@
                     <input type="text" class="form-control" name="tipo_material" value="{{ is_null( old('tipo_material')) ? $tipos->tipo_material : old('tipo_material') }}" />
                 </div>
              
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" style="margin-bottom: 4px;" class="btn  btn-block-mobile btn-success">
                     <i class="fa fa-plus-circle fa-lg"></i> Salvar
                 </button>
-                <a class="btn btn-default pull-right" href="{{ action('TipoMaterialController@index') }}">
+                <a class="btn  btn-block-mobile btn-default pull-right" href="{{ action('TipoMaterialController@index') }}">
                     <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>
         </div>
     </div>
-</section>
+
 @stop
  

@@ -16,3 +16,10 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('css/bootstrap3-wysihtml5.min.css') }}">
   {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --}}
+  <style type="text/css">
+    @media all and (max-width: 480px) {
+        .btn-block-mobile {
+            width: 100%; display: block;
+        }
+    }
+</style>

@@ -74,8 +74,8 @@
                                         <span class="help-block">{{ $errors->first("contato") }}</span>
                                     @endif
                                 </div> --}}
-                                <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle fa-lg"></i> Salvar</button>
-                                <a class="btn btn-default pull-right" href="{{ route('professors.index') }}"><i class="fas fa-reply"></i> Voltar para a lista</a>
+                                <button type="submit" style="margin-bottom: 4px;" class="btn btn-block-mobile btn-success"><i class="fa fa-plus-circle fa-lg"></i> Salvar</button>
+                                <a class="btn btn-block-mobile btn-default pull-right" href="{{ route('professors.index') }}"><i class="fas fa-reply"></i> Voltar para a lista</a>
                             </form>
                         </div>
                     </div>

@@ -10,29 +10,33 @@
 
 				 <div class="form-group">
 					<label>Professor</label>
-				<select class="form-control" name="professor_id">
-						@foreach($professores as $professor)
-							<option value="{{ $professor->id }}">{{ $professor->name }}</option>
+				
+					
+					<input type="text" disabled="disabled" class="form-control" name="professor" value="{{Auth::user()->name}}">
+				
+				</div>
+				<label>Material</label>
+				<select class="form-control"  name="material_id" value="material_id">
+						@foreach($material as $materiais)
+							<option value="{{ $materiais->id }}">{{ $materiais->nome }}</option>
 						@endforeach
 					</select>
-			
-			</div>
-				<div class="form-group">
+				
+				{{-- <div class="form-group">
 					<label>Material</label>
 					<input type="hidden" name="material_id" value="{{ $material_id }}">
 					<input type="text" disabled="disabled" value="{{ $material->nome }}" class="form-control" name="material"/>
-				</div>
-
+				</div> --}}
 				<div class="form-group">
 					<label>Data</label>
 					<input type="date" class="form-control" name="data_agendamento" value="data_agendamento" />
 				</div>
 
-				<button class="btn btn-block-mobile btn-success" style="margin-bottom: 4px;">
-					<i class="fas fa-check-circle"></i> Registrar Agendamento
+				<button class="btn btn-success btn-block-mobile" style="margin-top: 4px;">
+					<i class="fas fa-check-circle" ></i> Registrar Agendamento
 				</button>
 
-				<a href="/materiais" class="btn  btn-block-mobile btn-default">
+				<a href="/emprestimos"style="margin-top: 4px;" class="btn btn-default btn-block-mobile">
 					<i class="fas fa-reply"></i> Voltar para a lista
 				</a>
 			</form>

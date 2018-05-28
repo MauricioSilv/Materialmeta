@@ -21,7 +21,7 @@
                                             <label for="nome-field">Nome:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="nome-field" name="name" class="form-control" value="{{ old("name") }}"/>
+                                                    <input type="text" placeholder="nome completo..." id="nome-field" name="name" class="form-control" value="{{ old("name") }}"/>
                                                 </div>
                                             </div>
                                             @if($errors->has("name"))
@@ -51,7 +51,7 @@
                                          	</label>
                                          	<div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="email" name="email" class="form-control" value="{{ old("email") }}"/>
+                                                    <input type="text" placeholder="exemplo@gmail.com" id="email" name="email" class="form-control" value="{{ old("email") }}"/>
                                                 </div>
                                             </div>
                                            </div>
@@ -84,8 +84,8 @@
                                            </div>
                                           </div>
                                         <br>
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-check-circle"></i> Salvar</button>
-                                        <a class="btn btn-default pull-right" href="{{ route('professors.index') }}">
+                                        <button type="submit" style="margin-bottom: 4px;" class="btn btn-block-mobile btn-success"><i class="fa fa-plus-circle fa-lg"></i> Salvar</button>
+                                        <a class="btn btn-block-mobile btn-default pull-right" href="{{ route('professors.index') }}">
                                             <i class="fas fa-reply"></i>Voltar para a lista</a>
                                     </form>
                                 </div>

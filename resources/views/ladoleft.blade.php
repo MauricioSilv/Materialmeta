@@ -16,24 +16,27 @@
       </form>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">MENU</li>
         <li>
             <a href="/inicio">
                 <i class="fas fa-home"></i>
                 <span>Início</span>
             </a>
         </li>
+        
+
+        
+        @if(Auth::user()->perfil !== 'professor')
         <li>
             <a href="/materiais">
                 <i class="fas fa-archive"></i>
                 <span>Materiais</span>
             </a>
         </li>
-        @if(Auth::user()->perfil !== 'professor')
         <li class="treeview">
           <a href="#">
             <i class="fas fa-check-circle"></i>
-            <span>Config. Parâmetros</span>
+            <span>Configurações</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -55,7 +58,13 @@
           </ul>
         </li>
         <li>
-         
+         <li>
+            <a href="{{ action('EmprestimoController@index') }}">
+                <i class="far fa-thumbs-up"></i>
+                <span>Emprestimos</span>
+            </a>
+        </li>
+        
         
         <li>
             <a href="/professors">
@@ -63,6 +72,14 @@
                 <span>Professores</span>
             </a>
         </li>
+        @else
+         <li>
+            <a href="/emprestimos">
+                <i class="far fa-thumbs-up"></i>
+                <span>Emprestimos</span>
+            </a>
+        </li>
+
         @endif
       {{--
         <li class="treeview">

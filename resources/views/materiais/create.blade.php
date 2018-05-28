@@ -20,11 +20,11 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" class="form-control" name="nome"/>
+                    <input type="text" placeholder="ex: Datashow" class="form-control" name="nome"/>
                 </div>
                 <div class="form-group">
                     <label>Marca</label>
-                    <input type="text" class="form-control" name="marca"/>
+                    <input type="text" placeholder="ex: sony" class="form-control" name="marca"/>
                 </div>
                 <div class="form-group">
                     <label>Estado do Material</label>
@@ -47,10 +47,10 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-success">
-                    <i class="fas fa-check-circle"></i> Salvar
+                <button type="submit" style="margin-bottom: 3px;" class="btn btn-block-mobile btn-success">
+                    <i class="fa fa-plus-circle fa-lg"></i> Salvar
                 </button>
-                <a class="btn btn-default pull-right" href="{{ action('MaterialController@index') }}">
+                <a class="btn btn-default btn-block-mobile pull-right" href="{{ action('MaterialController@index') }}">
                     <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>

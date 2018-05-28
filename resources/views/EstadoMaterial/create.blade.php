@@ -19,12 +19,12 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label>Estado Atual</label>
-                    <input type="text" class="form-control" name="estado_atual"/>
+                    <input type="text" placeholder="Bom, Ruim, Manutenção..." class="form-control" name="estado_atual"/>
                 </div>
-                <button type="submit" class="btn btn-success">
+                <button type="submit" style="margin-bottom: 4px;" class="btn btn-block-mobile  btn-success">
                     <i class="fas fa-check-circle"></i> Salvar
                 </button>
-                <a class="btn btn-default pull-right" href="{{ action('MaterialController@index') }}">
+                <a class="btn btn-block-mobile btn-default pull-right" href="{{ action('MaterialController@index') }}">
                     <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>

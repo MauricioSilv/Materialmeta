@@ -20,12 +20,10 @@ class CreateEmprestimoTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('material_id')->unsigned();
             $table->foreign('material_id')->references('id')->on('material');
-            // $table->integer('professor_id')->unsigned();
-            // $table->foreign('professor_id')->references('id')->on('professor');
             $table->dateTime('devolucao')->nullable();
             $table->string('status_emprestimo');
-            $table->dateTime('data_emprestimo');
-            $table->dateTime('data_agendamento');
+            $table->date('data_emprestimo');
+            $table->date('data_agendamento');
         });
     }
 

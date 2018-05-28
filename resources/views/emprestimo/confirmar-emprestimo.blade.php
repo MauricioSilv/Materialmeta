@@ -22,16 +22,16 @@
 					<input type="text" disabled="disabled" value="{{ $material->nome }}" class="form-control" name="material"/>
 				</div>
 
-				<!-- <div class="form-group">
-					<label>Data</label>
-					<input type="date" class="form-control" name="data"/>
-				</div> -->
+				<div class="form-group">
+					<label>Data do Emprestimo</label>
+					<input type="date" class="form-control" name="data_emprestimo" value="data_emprestimo" />
+				</div>
 
-				<button class="btn btn-success">
+				<button class="btn  btn-block-mobile btn-success" style="margin-bottom: 4px;">
 					<i class="fa fa-check-circle"></i> Registrar Empréstimo
 				</button>
 
-				<a href="/materiais" class="btn btn-default">
+				<a href="/materiais" class="btn  btn-block-mobile btn-default">
 					<i class="fas fa-reply"></i> Voltar para a lista
 				</a>
 			</form>

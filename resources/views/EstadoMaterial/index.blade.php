@@ -11,10 +11,12 @@
 	  <h1>
 	    <i class="fa fa-archive"></i> Condições dos Materiais
 	    <small>Gerenciamento de materiais</small>
-		<a href="{{ action('EstadoMaterialController@create') }}" class="btn pull-right btn-success">
+		<a href="{{ action('EstadoMaterialController@create') }}" class="btn btn-block-mobile pull-right btn-success">
 			<i class="fa fa-plus-circle"></i> Criar Novo Estado do Material
+
 		</a>
 	  </h1>
+	   <div class="clearfix"><div/>
 	</section>
 @endsection
 @section('conteudo')
@@ -22,7 +24,7 @@
 	<div class="panel-heading">
 		<i class="fa fa-list"></i> Lista de Materiais
 	</div>
-	<div class="panel-body">
+	<div class="panel-body no-padding">
 		<table class="table table-bordered">
 		@if(count($estados))
 			<thead>

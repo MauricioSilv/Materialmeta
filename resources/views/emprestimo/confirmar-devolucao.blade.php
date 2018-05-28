@@ -29,11 +29,11 @@
 					<input type="date" class="form-control" name="data" />
 				</div> --}}
 
-				<button class="btn btn-success">
+				<button class="btn btn-block-mobile btn-success" style="margin-bottom: 4px;">
 					<i class="fas fa-check-circle"></i> Registrar Devolução
 				</button>
 
-				<a href="/materiais" class="btn btn-default">
+				<a href="/materiais" class="btn  btn-block-mobile btn-default">
 					<i class="fas fa-reply"></i> Voltar para a lista
 				</a>
 			</form>

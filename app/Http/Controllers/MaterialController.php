@@ -37,6 +37,15 @@ class MaterialController extends Controller
          $materiais->where('material.nome', 'like', '%' .$request->get('pesquisa'). '%');
         }
 
+        // if (Auth::user()->perfil == 'professor')
+        // {
+        //     $materiais->where(function($consulta){
+        //      $consulta->where('emprestimo.user_id', '=', Auth::user()->id);
+        //     // $consulta->where('emprestimo.status_emprestimo', '=', 'reservado');
+        //     });
+        //     // $materiais->orWhere('emprestimo.status_emprestimo', '=', 'Livre');
+        // }
+        // dd($materiais->toSql());
        $materiais = $materiais->get(); // collection;
 
       // $material->orderBy('nome', 'asc');

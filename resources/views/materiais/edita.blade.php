@@ -48,10 +48,10 @@
 
                  </div>
              
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" style="margin-bottom: 4px;" class="btn  btn-block-mobile btn-success">
                     <i class="fa fa-plus-circle fa-lg"></i> Salvar
                 </button>
-                <a class="btn btn-default pull-right" href="{{ action('MaterialController@index') }}">
+                <a class="btn  btn-block-mobile btn-default pull-right" href="{{ action('MaterialController@index') }}">
                     <i class="fas fa-reply"></i> Voltar para a lista
                 </a>
             </form>
