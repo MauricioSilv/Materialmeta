@@ -144,7 +144,7 @@ class EmprestimoController extends Controller
 
         $confirmar = DB::table('emprestimo')
         ->where('material_id', $request->get('material_id'))
-        ->update(['status_emprestimo' => 'Ativo']);
+        ->update(['status_emprestimo' => 'Emprestado']);
 
         Session::flash('mensagem' , 'Emprestimo realizado com sucesso!');
 

@@ -60,16 +60,34 @@
         </div>
        @else
         
+          <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{  count($agendamentouser)}}</h3>
+
+              <p>Total de <br/> Emprestimos</p>
+            </div>
+            <div class="icon">
+              <i class="far fa-thumbs-up"></i>
+            </div>
+          </div>
+        </div>
+          <!-- /.info-box -->
+          <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>{{ count($reservado) }}</h3>
+
+              <p>Agendamentos<br/> Ativo</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+        </div>
+
        @endif
-     
-
-
-
-
-
-
-
-
-
 
       @endsection

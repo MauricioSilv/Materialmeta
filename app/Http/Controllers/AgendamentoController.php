@@ -79,7 +79,7 @@ class AgendamentoController extends Controller
       // ->update(['status_emprestimo' => 'Reservado']);
       
       
-
+        
         return redirect()->action('HomeController@index');
    }
 

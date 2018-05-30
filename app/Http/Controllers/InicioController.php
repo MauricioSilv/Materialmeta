@@ -19,11 +19,26 @@ class InicioController extends Controller
                    ->where([
                     ['perfil', '=', 'professor'], 
                     ])->get();
+        $agendamentouser = Emprestimo::select(
+            'emprestimo.*'
+            );
+        $reservado = Emprestimo::select(
+            'emprestimo.*'
+        );
+        if(\Auth::user()->perfil =='professor')
+        {
+            $reservado->where('emprestimo.status_emprestimo', '=', 'reservado');
+            $agendamentouser->where('emprestimo.user_id', '=', \Auth::user()->id);
+        }
+        $agendamentouser = $agendamentouser->get();
+        $reservado = $reservado->get();
         return view('index', [
 
         	'emprestimos' => $emprestimos,
         	'materiais' => $materiais,
         	'users' => $users,
+            'agendamentouser' => $agendamentouser,
+            'reservado' =>$reservado,
 
 
 

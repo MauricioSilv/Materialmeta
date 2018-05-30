@@ -79,7 +79,7 @@
 						 	@switch($material->status_material)
 						 	 @case($material->status_material == 1)
 								<a href="{{ action('AgendamentoController@listar', $material->id) }}" class="btn btn-warning">
-									 <i class="far fa-clock"></i> Agendar
+									 <i class="fas fa-clock"></i> Agendar
 								</a>
 							@if(Auth::user()->perfil !== 'professor')
 								<a href="{{action('EmprestimoController@show', $material->id)}}" class="btn btm-sm btn-success" >
