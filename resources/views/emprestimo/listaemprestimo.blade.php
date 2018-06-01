@@ -44,7 +44,7 @@
                 	<td>{{ $empre->id }}</td>
                 	<td>{{ $empre->nome}}</td>
                 	<td>{{ $empre->status_material}}</td>
-                	<td>{{ $empre->status_emprestimo }}
+                	<td>{{ $empre->status_emprestimo }}</td>
                   	<td>
 						<a href="{{ action('AgendamentoController@desfazer', $empre->material_id) }}" class="btn btn-danger">
 							<i class="fas fa-times"></i> Desfazer 
@@ -62,7 +62,6 @@
 	 	 @endif
 	 </table>
 	</div>
- </div>
+	</div>
 </div>
-
  @endsection

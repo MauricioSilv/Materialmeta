@@ -42,7 +42,7 @@
 						<p>Material: {{ $empre->nome }}</p>
 						<p>Professor: {{ $empre->name }}</p>
                 	</td>
-                	<td>{{ $empre->status_emprestimo }}
+                	<td>{{ $empre->status_emprestimo }}</td>
                 	<td>{{ date('d/m/Y', strtotime($empre->data_emprestimo))}}</td>
                 	<td>{{ date('d/m/Y | H:i:s', strtotime($empre->devolucao))}}</td>
                 </tr>
@@ -60,4 +60,5 @@
 	 </table>
 	</div>
  </div>
+</div>
  @endsection
