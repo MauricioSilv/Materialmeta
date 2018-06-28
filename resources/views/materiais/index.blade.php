@@ -52,7 +52,7 @@
 						<th width="1%">Cód.</th>
 						<th width="15%">Nome/Estado/Tipo</th>
 						<th width="10%">Marca</th>
-						<th width="5%">Status</th>
+						<th width="10%">Status</th>
 						<th>Ações</th>
 					</tr>
 				</thead>

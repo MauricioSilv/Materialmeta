@@ -9,6 +9,7 @@ use App\Emprestimo;
 use App\Material;
 use App\User;
 use Session;
+use Gate;
 
 class AgendamentoController extends Controller
 {
@@ -93,6 +94,9 @@ class AgendamentoController extends Controller
    		$materiais = Material::find($id);
    		$emprestimo = Emprestimo::all();
 
+//$this->authorize('emprestimo.desfazer-agendamento', $materiais);
+      // if(Gate::denies('agendamento', $emprestimo))
+      //       abort(403, 'Unauthorized');
 
    		return view('emprestimo.desfazer-agendamento', [
 
@@ -129,7 +133,7 @@ class AgendamentoController extends Controller
       $emprestimo = Emprestimo::select(
         'emprestimo.*',
         'material.nome',
-        'material.status_material'
+        'material.marca'
       )
   ->join('material', 'material.id', '=', 'emprestimo.material_id');
 

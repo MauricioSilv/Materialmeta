@@ -33,7 +33,7 @@
 	 		<tr>
 	 			<th width="1%">Cód</th>
 	 			<th>Nome do material</th>
-	 			<th>Status Material</th>
+	 			<th>Marca</th>
 	 			<th>Status do Emprestimo</th>
 	 			<th>Ações</th>
 	 		</tr>
@@ -43,7 +43,7 @@
                 <tr>
                 	<td>{{ $empre->id }}</td>
                 	<td>{{ $empre->nome}}</td>
-                	<td>{{ $empre->status_material}}</td>
+                	<td>{{ $empre->marca}}</td>
                 	<td>{{ $empre->status_emprestimo }}</td>
                   	<td>
 						<a href="{{ action('AgendamentoController@desfazer', $empre->material_id) }}" class="btn btn-danger">
