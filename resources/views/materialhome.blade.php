@@ -41,7 +41,7 @@
     <div class="pull-right hidden-xs">
       <b>Versão</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2017-2018 <a href="https://adminlte.io">Material Meta</a>.</strong> 
+    <strong>Copyright &copy; 2017-2018 <a href="https://adminlte.io">Admin</a>.</strong> 
   </footer>
   </div>    
  @include('bootstrap.js')

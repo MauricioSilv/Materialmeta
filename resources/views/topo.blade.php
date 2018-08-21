@@ -2,9 +2,9 @@
  <header class="main-header">
      <a  class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>MA</b>M</span>
+      <span class="logo-mini"><b>AD</b>M</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>MATERIAL</b>META</span>
+      <span class="logo-lg"><b>ADMIN</b></span>
     </a>
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->

@@ -13,6 +13,14 @@ use Session;
 
 class MaterialController extends Controller
 {
+    private $estados;
+    private $tipos;
+
+    public function construct__(EstadoMaterial $estados,TipoMaterial $tipos)
+    {
+        $this->tipos = $tipos;
+        $this->estados = $estados;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +29,6 @@ class MaterialController extends Controller
     public function index(Request $request)
     {   
         $emprestimo = Emprestimo::all(); // Return Collection
-     
 
         $materiais = Material::select(
             'material.*',
@@ -31,28 +38,13 @@ class MaterialController extends Controller
         ->join('estadomaterial', 'estadomaterial.id', '=', 'material.estado_material_id')
         ->join('tipomaterial', 'tipomaterial.id', '=', 'material.tipo_material_id')
         ->with(['emprestimos']); // return Builder;
-        //->get();
-        //$material = Material::select('*');
+
        if($request->has('pesquisa')){
          $materiais->where('material.nome', 'like', '%' .$request->get('pesquisa'). '%');
         }
 
-        // if (Auth::user()->perfil == 'professor')
-        // {
-        //     $materiais->where(function($consulta){
-        //      $consulta->where('emprestimo.user_id', '=', Auth::user()->id);
-        //     // $consulta->where('emprestimo.status_emprestimo', '=', 'reservado');
-        //     });
-        //     // $materiais->orWhere('emprestimo.status_emprestimo', '=', 'Livre');
-        // }
-        // dd($materiais->toSql());
-       $materiais = $materiais->get(); // collection;
+       $materiais = $materiais->get(); //return collection
 
-      // $material->orderBy('nome', 'asc');
-
-       //$materiais = $material->get();
-
-       
        return view('materiais.index', [
 
             'materiais'=> $materiais,
@@ -71,10 +63,10 @@ class MaterialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($tipos,$estados)
     {
-        $estados = EstadoMaterial::all();
-        $tipos = TipoMaterial::all();
+        $estados->all();
+        $tipos->all();
 
         return view('materiais.create',array('estados' => $estados, 'tipo' =>$tipos));
     }
